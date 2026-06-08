@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Rose Legacy Home Solutions LLC — HVAC, Plumbing & Electrical · Overland Park & Lee's Summit</title>
 <meta name="description" content="Rose Legacy Home Solutions LLC keeps Kansas City Metro homes and apartment communities running — HVAC repair & installation, water heater replacement, plumbing, electrical, and make-ready handyman work. Overland Park, Lee's Summit, and the surrounding KC Metro."/>
+<link rel="icon" type="image/png" href="logo.png"/>
+<link rel="apple-touch-icon" href="logo.png"/>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -66,7 +68,8 @@
   header.scrolled{ box-shadow:0 10px 30px rgba(52,23,96,.08); }
   .nav{ display:flex; align-items:center; justify-content:space-between; padding:16px 28px; max-width:1180px; margin:0 auto; }
   .brand{ display:flex; align-items:center; gap:12px; text-decoration:none; }
-  .brand-mark{ width:42px; height:42px; flex:none; }
+  .brand-mark{ width:44px; height:44px; flex:none; border-radius:50%; object-fit:cover; box-shadow:0 4px 14px rgba(52,23,96,.22); transition:transform .35s cubic-bezier(.2,.7,.2,1); }
+  .brand:hover .brand-mark{ transform:rotate(-6deg) scale(1.06); }
   .brand-name{ font-family:'DM Serif Display', serif; font-size:19px; color:var(--purple-deep); line-height:1.1; }
   .brand-sub{ font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--copper); font-weight:600; }
   .nav-links{ display:flex; align-items:center; gap:30px; }
@@ -315,13 +318,7 @@
 <header id="site-header">
   <div class="nav">
     <a class="brand" href="#top">
-      <svg class="brand-mark" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <circle cx="32" cy="32" r="31" fill="url(#bgGrad)"/>
-        <path d="M20 36c0-9 5-15 12-19 7 4 12 10 12 19a12 12 0 0 1-24 0Z" fill="#ffffff" opacity=".15"/>
-        <path d="M32 16c5.5 4 9 9.7 9 16.4A9 9 0 0 1 23 32.4C23 25.7 26.5 20 32 16Z" fill="#fff"/>
-        <circle cx="32" cy="33" r="3.4" fill="#c1693f"/>
-        <defs><linearGradient id="bgGrad" x1="0" y1="0" x2="64" y2="64"><stop stop-color="#5b2a9c"/><stop offset="1" stop-color="#341760"/></linearGradient></defs>
-      </svg>
+      <img class="brand-mark" src="logo.png" alt="Rose Legacy Home Solutions logo"/>
       <span>
         <span class="brand-name" style="display:block;">Rose Legacy</span>
         <span class="brand-sub">Home Solutions LLC</span>
