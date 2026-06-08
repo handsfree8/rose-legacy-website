@@ -1,0 +1,674 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Rose Legacy Home Solutions LLC — HVAC, Plumbing & Electrical · Overland Park & Lee's Summit</title>
+<meta name="description" content="Rose Legacy Home Solutions LLC keeps Kansas City Metro homes and apartment communities running — HVAC repair & installation, water heater replacement, plumbing, electrical, and make-ready handyman work. Overland Park, Lee's Summit, and the surrounding KC Metro."/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --purple:#4a2080;
+    --purple-deep:#341760;
+    --purple-soft:#efe9f8;
+    --ink:#2b2640;
+    --ink-soft:#6c6580;
+    --copper:#c1693f;
+    --copper-light:#e3a06f;
+    --cream:#faf8f4;
+    --line:#e3defa;
+    --shadow: 0 20px 60px rgba(52, 23, 96, .12);
+  }
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    margin:0;
+    font-family:'DM Sans', sans-serif;
+    color:var(--ink);
+    background:var(--cream);
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,h4{ font-family:'DM Serif Display', serif; font-weight:400; margin:0; letter-spacing:-.01em; }
+  p{ margin:0; line-height:1.7; color:var(--ink-soft); }
+  a{ color:inherit; }
+  img,svg{ display:block; max-width:100%; }
+  ::selection{ background:var(--copper-light); color:var(--purple-deep); }
+
+  .wrap{ max-width:1180px; margin:0 auto; padding:0 28px; }
+
+  /* reveal-on-scroll */
+  [data-reveal]{ opacity:0; transform:translateY(28px); transition:opacity .8s cubic-bezier(.2,.7,.2,1), transform .8s cubic-bezier(.2,.7,.2,1); }
+  [data-reveal].in{ opacity:1; transform:translateY(0); }
+  [data-reveal="stagger"] > *{ opacity:0; transform:translateY(22px); transition:opacity .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1); }
+  [data-reveal="stagger"].in > *{ opacity:1; transform:translateY(0); }
+  [data-reveal="stagger"].in > *:nth-child(1){ transition-delay:.05s; }
+  [data-reveal="stagger"].in > *:nth-child(2){ transition-delay:.14s; }
+  [data-reveal="stagger"].in > *:nth-child(3){ transition-delay:.23s; }
+  [data-reveal="stagger"].in > *:nth-child(4){ transition-delay:.32s; }
+  [data-reveal="stagger"].in > *:nth-child(5){ transition-delay:.41s; }
+  [data-reveal="stagger"].in > *:nth-child(6){ transition-delay:.5s; }
+  @media (prefers-reduced-motion:reduce){
+    html{ scroll-behavior:auto; }
+    [data-reveal],[data-reveal="stagger"] > *{ opacity:1 !important; transform:none !important; transition:none !important; }
+  }
+
+  /* ===== Header ===== */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(250,248,244,.78);
+    backdrop-filter:saturate(160%) blur(14px);
+    border-bottom:1px solid rgba(74,32,128,.08);
+    transition:box-shadow .3s ease;
+  }
+  header.scrolled{ box-shadow:0 10px 30px rgba(52,23,96,.08); }
+  .nav{ display:flex; align-items:center; justify-content:space-between; padding:16px 28px; max-width:1180px; margin:0 auto; }
+  .brand{ display:flex; align-items:center; gap:12px; text-decoration:none; }
+  .brand-mark{ width:42px; height:42px; flex:none; }
+  .brand-name{ font-family:'DM Serif Display', serif; font-size:19px; color:var(--purple-deep); line-height:1.1; }
+  .brand-sub{ font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--copper); font-weight:600; }
+  .nav-links{ display:flex; align-items:center; gap:30px; }
+  .nav-links a{ font-size:14.5px; text-decoration:none; color:var(--ink); position:relative; padding:4px 0; }
+  .nav-links a::after{ content:''; position:absolute; left:0; right:100%; bottom:-2px; height:2px; background:var(--copper); transition:right .35s cubic-bezier(.2,.7,.2,1); }
+  .nav-links a:hover::after{ right:0; }
+  .nav-call{
+    display:inline-flex; align-items:center; gap:9px;
+    background:var(--purple); color:#fff; text-decoration:none;
+    padding:11px 20px; border-radius:999px; font-weight:600; font-size:14px;
+    box-shadow:0 8px 20px rgba(74,32,128,.28);
+    transition:transform .25s cubic-bezier(.2,.7,.2,1), box-shadow .25s ease, background .25s ease;
+    white-space:nowrap;
+  }
+  .nav-call:hover{ transform:translateY(-2px); box-shadow:0 12px 28px rgba(74,32,128,.36); background:var(--purple-deep); }
+  .nav-call svg{ width:16px; height:16px; }
+  .menu-btn{ display:none; }
+
+  /* ===== Hero (asymmetric, no center-two-CTA cliché) ===== */
+  .hero{ position:relative; padding:84px 0 60px; overflow:hidden; }
+  .hero-grid{ display:grid; grid-template-columns:1.15fr .85fr; gap:56px; align-items:center; }
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:9px;
+    font-size:12.5px; letter-spacing:.16em; text-transform:uppercase; font-weight:600;
+    color:var(--purple); background:var(--purple-soft); border-radius:999px;
+    padding:8px 16px; margin-bottom:26px;
+  }
+  .eyebrow .dot{ width:6px; height:6px; border-radius:50%; background:var(--copper); animation:pulse 2.4s infinite ease-in-out; }
+  @keyframes pulse{ 0%,100%{ transform:scale(1); opacity:1;} 50%{ transform:scale(1.7); opacity:.4; } }
+  .hero h1{
+    font-size:clamp(38px, 5.4vw, 64px); line-height:1.07; color:var(--purple-deep);
+    letter-spacing:-.02em;
+  }
+  .hero h1 em{ font-style:italic; color:var(--copper); }
+  .hero p.lede{ margin-top:24px; font-size:18px; max-width:50ch; }
+  .hero-actions{ margin-top:36px; display:flex; align-items:center; gap:28px; flex-wrap:wrap; }
+  .btn-primary{
+    display:inline-flex; align-items:center; gap:11px;
+    background:var(--purple); color:#fff; text-decoration:none;
+    padding:16px 30px; border-radius:14px; font-weight:600; font-size:16px;
+    box-shadow:0 14px 34px rgba(74,32,128,.3);
+    transition:transform .28s cubic-bezier(.2,.7,.2,1), box-shadow .28s ease, background .28s ease;
+  }
+  .btn-primary:hover{ transform:translateY(-3px); box-shadow:0 18px 42px rgba(74,32,128,.38); background:var(--purple-deep); }
+  .btn-primary svg{ width:18px; height:18px; transition:transform .3s ease; }
+  .btn-primary:hover svg{ transform:translateX(3px); }
+  .text-link{
+    display:inline-flex; align-items:center; gap:8px; text-decoration:none; font-weight:600; font-size:15px; color:var(--purple-deep);
+    border-bottom:2px solid var(--line); padding-bottom:3px; transition:border-color .25s ease, color .25s ease, gap .25s ease;
+  }
+  .text-link:hover{ border-color:var(--copper); color:var(--copper); gap:12px; }
+  .hero-strip{ margin-top:44px; display:flex; flex-wrap:wrap; gap:14px 30px; }
+  .hero-strip span{
+    font-size:13px; color:var(--ink-soft); display:flex; align-items:center; gap:8px; font-weight:500;
+  }
+  .hero-strip svg{ width:16px; height:16px; color:var(--copper); }
+
+  /* hero visual: animated dial / comfort gauge, hand-built SVG, not stock */
+  .hero-visual{ position:relative; display:flex; align-items:center; justify-content:center; }
+  .gauge-wrap{ position:relative; width:340px; max-width:100%; aspect-ratio:1; }
+  .gauge-ring{ animation:spin 38s linear infinite; transform-origin:center; }
+  .gauge-ring.alt{ animation-direction:reverse; animation-duration:52s; }
+  @keyframes spin{ to{ transform:rotate(360deg); } }
+  .gauge-needle{ animation:sway 5s ease-in-out infinite; transform-origin:170px 170px; }
+  @keyframes sway{ 0%,100%{ transform:rotate(-22deg);} 50%{ transform:rotate(18deg);} }
+  .gauge-spark{ animation:flicker 3.6s ease-in-out infinite; }
+  @keyframes flicker{ 0%,100%{ opacity:.55; transform:scale(1);} 50%{ opacity:1; transform:scale(1.12);} }
+  .gauge-temp{ font-family:'DM Serif Display',serif; font-size:40px; fill:var(--purple-deep); }
+  .gauge-label{ font-family:'DM Sans',sans-serif; font-size:11px; letter-spacing:.16em; fill:var(--ink-soft); }
+  .float-card{
+    position:absolute; background:#fff; border-radius:16px; box-shadow:var(--shadow);
+    padding:14px 18px; display:flex; align-items:center; gap:12px; font-size:13px; font-weight:600;
+    animation:float 6s ease-in-out infinite;
+  }
+  .float-card svg{ width:22px; height:22px; color:var(--copper); }
+  .float-card.fc1{ top:6%; left:-6%; animation-delay:0s; }
+  .float-card.fc2{ bottom:8%; right:-10%; animation-delay:1.4s; }
+  @keyframes float{ 0%,100%{ transform:translateY(0);} 50%{ transform:translateY(-14px);} }
+  @media (max-width: 980px){
+    .hero-grid{ grid-template-columns:1fr; }
+    .hero-visual{ order:-1; margin-bottom:14px; }
+    .float-card{ display:none; }
+  }
+
+  /* ===== Section shell ===== */
+  section{ padding:96px 0; position:relative; }
+  .section-head{ max-width:640px; margin-bottom:56px; }
+  .kicker{ font-size:12.5px; letter-spacing:.18em; text-transform:uppercase; font-weight:700; color:var(--copper); margin-bottom:14px; display:block; }
+  .section-head h2{ font-size:clamp(28px,3.6vw,42px); color:var(--purple-deep); line-height:1.16; }
+  .section-head p{ margin-top:16px; font-size:16.5px; }
+
+  /* ===== HVAC focus services ===== */
+  .hvac-band{ background:linear-gradient(180deg, #fff 0%, var(--purple-soft) 100%); border-radius:32px; }
+  .hvac-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:20px; }
+  .hvac-card{
+    background:#fff; border-radius:20px; padding:30px 26px; border:1px solid var(--line);
+    transition:transform .35s cubic-bezier(.2,.7,.2,1), box-shadow .35s ease, border-color .35s ease;
+    position:relative; overflow:hidden;
+  }
+  .hvac-card::before{
+    content:''; position:absolute; inset:0; opacity:0; background:linear-gradient(135deg, rgba(74,32,128,.06), rgba(193,105,63,.08));
+    transition:opacity .35s ease;
+  }
+  .hvac-card:hover{ transform:translateY(-8px); box-shadow:var(--shadow); border-color:transparent; }
+  .hvac-card:hover::before{ opacity:1; }
+  .hvac-card .icon{
+    width:52px; height:52px; border-radius:14px; background:var(--purple); color:#fff;
+    display:flex; align-items:center; justify-content:center; margin-bottom:20px;
+    transition:transform .4s cubic-bezier(.2,.7,.2,1), background .4s ease;
+    position:relative; z-index:1;
+  }
+  .hvac-card:hover .icon{ transform:rotate(-8deg) scale(1.08); background:var(--copper); }
+  .hvac-card .icon svg{ width:26px; height:26px; }
+  .hvac-card h3{ font-size:20px; color:var(--purple-deep); margin-bottom:10px; position:relative; z-index:1; }
+  .hvac-card p{ font-size:14.5px; position:relative; z-index:1; }
+  @media (max-width:980px){ .hvac-grid{ grid-template-columns:repeat(2,1fr); } }
+  @media (max-width:620px){ .hvac-grid{ grid-template-columns:1fr; } }
+
+  /* ===== Beyond HVAC ===== */
+  .beyond-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+  .beyond-card{
+    display:flex; gap:18px; align-items:flex-start; padding:26px; border-radius:18px;
+    background:#fff; border:1px solid var(--line); transition:border-color .3s ease, transform .3s ease;
+  }
+  .beyond-card:hover{ border-color:var(--purple); transform:translateX(4px); }
+  .beyond-card .icon{
+    flex:none; width:44px; height:44px; border-radius:12px; background:var(--purple-soft); color:var(--purple);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .beyond-card .icon svg{ width:22px; height:22px; }
+  .beyond-card h4{ font-size:17px; color:var(--purple-deep); margin-bottom:6px; }
+  .beyond-card p{ font-size:14px; }
+  @media (max-width:900px){ .beyond-grid{ grid-template-columns:1fr 1fr; } }
+  @media (max-width:620px){ .beyond-grid{ grid-template-columns:1fr; } }
+
+  /* ===== Service area ===== */
+  .area-section{ background:var(--purple-deep); color:#fff; border-radius:32px; overflow:hidden; position:relative; }
+  .area-section::before{
+    content:''; position:absolute; inset:0;
+    background:
+      radial-gradient(520px 320px at 14% 20%, rgba(193,105,63,.28), transparent 60%),
+      radial-gradient(420px 420px at 88% 78%, rgba(255,255,255,.08), transparent 65%);
+    pointer-events:none;
+  }
+  .area-inner{ position:relative; padding:72px 56px; display:grid; grid-template-columns:1fr 1fr; gap:50px; align-items:center; }
+  .area-inner .kicker{ color:var(--copper-light); }
+  .area-inner h2{ color:#fff; font-size:clamp(26px,3.4vw,38px); }
+  .area-inner p{ color:rgba(255,255,255,.78); margin-top:14px; font-size:16px; }
+  .city-list{ display:flex; flex-wrap:wrap; gap:12px; margin-top:28px; }
+  .city-pill{
+    border:1px solid rgba(255,255,255,.28); border-radius:999px; padding:10px 20px; font-size:14px; font-weight:600;
+    display:flex; align-items:center; gap:9px; transition:background .3s ease, border-color .3s ease, transform .3s ease;
+  }
+  .city-pill:hover{ background:rgba(255,255,255,.12); border-color:rgba(255,255,255,.5); transform:translateY(-2px); }
+  .city-pill svg{ width:14px; height:14px; color:var(--copper-light); }
+  .radar{ position:relative; width:100%; aspect-ratio:1; max-width:340px; margin:0 auto; }
+  .radar-ring{ stroke:rgba(255,255,255,.18); fill:none; }
+  .radar-sweep{ animation:sweep 4.5s linear infinite; transform-origin:170px 170px; }
+  @keyframes sweep{ to{ transform:rotate(360deg); } }
+  .radar-pin{ animation:ping 2.6s ease-in-out infinite; }
+  .radar-pin.p2{ animation-delay:.6s; }
+  .radar-pin.p3{ animation-delay:1.3s; }
+  @keyframes ping{ 0%,100%{ opacity:.55; r:5;} 50%{ opacity:1; r:8;} }
+  @media (max-width:880px){ .area-inner{ grid-template-columns:1fr; padding:52px 28px; } }
+
+  /* ===== Maintenance plans ===== */
+  .plans-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:22px; }
+  .plan-card{
+    border-radius:22px; padding:34px 30px; border:1px solid var(--line); background:#fff;
+    transition:transform .35s cubic-bezier(.2,.7,.2,1), box-shadow .35s ease;
+    display:flex; flex-direction:column; gap:18px;
+  }
+  .plan-card:hover{ transform:translateY(-6px); box-shadow:var(--shadow); }
+  .plan-card.featured{ background:var(--purple); color:#fff; border-color:var(--purple); position:relative; }
+  .plan-card.featured h3, .plan-card.featured .plan-tag{ color:#fff; }
+  .plan-card.featured p{ color:rgba(255,255,255,.8); }
+  .plan-card.featured li{ color:rgba(255,255,255,.92); }
+  .plan-card.featured li svg{ color:var(--copper-light); }
+  .plan-tag{ font-size:12px; letter-spacing:.14em; text-transform:uppercase; font-weight:700; color:var(--copper); }
+  .plan-card h3{ font-size:23px; color:var(--purple-deep); }
+  .plan-card ul{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:11px; }
+  .plan-card li{ display:flex; gap:10px; align-items:flex-start; font-size:14.5px; color:var(--ink-soft); }
+  .plan-card li svg{ flex:none; width:18px; height:18px; color:var(--purple); margin-top:2px; }
+  @media (max-width:980px){ .plans-grid{ grid-template-columns:1fr; } }
+
+  /* ===== Reviews ===== */
+  .reviews-wrap{ position:relative; }
+  .reviews-track{ display:grid; grid-template-columns:repeat(3,1fr); gap:22px; }
+  .review-card{
+    background:#fff; border-radius:20px; padding:30px 28px; border:1px solid var(--line);
+    display:flex; flex-direction:column; gap:18px; position:relative;
+    transition:transform .35s ease, box-shadow .35s ease;
+  }
+  .review-card:hover{ transform:translateY(-5px); box-shadow:var(--shadow); }
+  .review-card .quote-mark{ font-family:'DM Serif Display',serif; font-size:54px; color:var(--purple-soft); line-height:.6; }
+  .review-card .stars{ display:flex; gap:3px; }
+  .review-card .stars svg{ width:16px; height:16px; color:var(--copper); }
+  .review-card blockquote{ margin:0; font-size:15.5px; line-height:1.65; color:var(--ink); font-style:italic; }
+  .review-card .who{ font-size:13px; font-weight:700; color:var(--purple-deep); }
+  .review-card .who span{ display:block; font-weight:500; color:var(--ink-soft); font-size:12px; margin-top:2px; }
+  @media (max-width:980px){ .reviews-track{ grid-template-columns:1fr; } }
+
+  /* ===== Contact / CTA ===== */
+  .contact-band{ background:linear-gradient(160deg, var(--purple) 0%, var(--purple-deep) 100%); border-radius:32px; color:#fff; position:relative; overflow:hidden; }
+  .contact-band::after{
+    content:''; position:absolute; right:-120px; top:-120px; width:340px; height:340px; border-radius:50%;
+    background:radial-gradient(circle, rgba(193,105,63,.35), transparent 70%);
+  }
+  .contact-inner{ position:relative; padding:72px 56px; display:grid; grid-template-columns:1.1fr .9fr; gap:54px; }
+  .contact-inner h2{ color:#fff; font-size:clamp(28px,3.6vw,42px); }
+  .contact-inner > div > p{ color:rgba(255,255,255,.8); margin-top:16px; font-size:16px; max-width:46ch; }
+  .contact-cta{ margin-top:30px; }
+  .contact-cta .btn-primary{ background:#fff; color:var(--purple-deep); box-shadow:0 14px 34px rgba(0,0,0,.2); }
+  .contact-cta .btn-primary:hover{ background:var(--copper-light); color:var(--purple-deep); }
+  .info-card{ background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.18); border-radius:20px; padding:32px; backdrop-filter:blur(6px); }
+  .info-row{ display:flex; gap:16px; padding:14px 0; border-bottom:1px solid rgba(255,255,255,.14); }
+  .info-row:last-child{ border-bottom:none; padding-bottom:0; }
+  .info-row:first-child{ padding-top:0; }
+  .info-row .icon{ flex:none; width:40px; height:40px; border-radius:11px; background:rgba(255,255,255,.14); display:flex; align-items:center; justify-content:center; }
+  .info-row .icon svg{ width:19px; height:19px; color:var(--copper-light); }
+  .info-row .label{ font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:rgba(255,255,255,.6); margin-bottom:4px; }
+  .info-row .value{ font-size:15.5px; font-weight:600; }
+  .info-row a{ text-decoration:none; transition:color .25s ease; }
+  .info-row a:hover{ color:var(--copper-light); }
+  @media (max-width:900px){ .contact-inner{ grid-template-columns:1fr; padding:52px 28px; } }
+
+  /* ===== Footer ===== */
+  footer{ padding:50px 0 36px; }
+  .footer-inner{ display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:18px; border-top:1px solid var(--line); padding-top:30px; }
+  .footer-inner p{ font-size:13px; color:var(--ink-soft); }
+  .footer-links{ display:flex; gap:22px; }
+  .footer-links a{ font-size:13px; text-decoration:none; color:var(--ink-soft); transition:color .25s ease; }
+  .footer-links a:hover{ color:var(--purple); }
+
+  @media (max-width:760px){
+    .nav-links{ display:none; }
+    .hvac-band{ border-radius:22px; }
+    .area-section, .contact-band{ border-radius:22px; }
+    .area-inner, .contact-inner{ padding:42px 22px; }
+    section{ padding:64px 0; }
+  }
+</style>
+</head>
+<body>
+
+<header id="site-header">
+  <div class="nav">
+    <a class="brand" href="#top">
+      <svg class="brand-mark" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <circle cx="32" cy="32" r="31" fill="url(#bgGrad)"/>
+        <path d="M20 36c0-9 5-15 12-19 7 4 12 10 12 19a12 12 0 0 1-24 0Z" fill="#ffffff" opacity=".15"/>
+        <path d="M32 16c5.5 4 9 9.7 9 16.4A9 9 0 0 1 23 32.4C23 25.7 26.5 20 32 16Z" fill="#fff"/>
+        <circle cx="32" cy="33" r="3.4" fill="#c1693f"/>
+        <defs><linearGradient id="bgGrad" x1="0" y1="0" x2="64" y2="64"><stop stop-color="#5b2a9c"/><stop offset="1" stop-color="#341760"/></linearGradient></defs>
+      </svg>
+      <span>
+        <span class="brand-name" style="display:block;">Rose Legacy</span>
+        <span class="brand-sub">Home Solutions LLC</span>
+      </span>
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="#services">HVAC Services</a>
+      <a href="#beyond">Plumbing &amp; Electrical</a>
+      <a href="#plans">Maintenance Plans</a>
+      <a href="#area">Service Area</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="nav-call" href="tel:+14849512588">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"/></svg>
+      (484) 951-2588
+    </a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div data-reveal>
+        <span class="eyebrow"><span class="dot"></span> Overland Park · Lee's Summit · KC Metro</span>
+        <h1>It's 97° outside and your air just quit. <em>We pick up the phone.</em></h1>
+        <p class="lede">Rose Legacy Home Solutions LLC keeps Kansas City Metro homes — and the property managers who run them — comfortable through every season. HVAC is the work we're known for. Plumbing, electrical, and handyman make-readies round out the rest, all from one crew you can actually reach.</p>
+        <div class="hero-actions">
+          <a class="btn-primary" href="tel:+14849512588">
+            Call (484) 951-2588
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a class="text-link" href="#services">See what we fix <span aria-hidden="true">→</span></a>
+        </div>
+        <div class="hero-strip">
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg> Locally owned &amp; operated</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3 7h7l-5.5 4.5L18.5 21 12 16.5 5.5 21l2-7.5L2 9h7z"/></svg> HVAC is our specialty</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> Real people answer the phone</span>
+        </div>
+      </div>
+
+      <div class="hero-visual" data-reveal>
+        <div class="float-card fc1">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/><circle cx="12" cy="12" r="4"/></svg>
+          AC tune-ups before the heat hits
+        </div>
+        <div class="float-card fc2">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-5.4 7-11a7 7 0 1 0-14 0c0 5.6 7 11 7 11Z"/><circle cx="12" cy="11" r="2.4"/></svg>
+          Serving Overland Park &amp; Lee's Summit
+        </div>
+        <div class="gauge-wrap">
+          <svg viewBox="0 0 340 340" width="100%" height="100%" aria-hidden="true">
+            <g class="gauge-ring">
+              <circle cx="170" cy="170" r="150" fill="none" stroke="#efe9f8" stroke-width="2" stroke-dasharray="2 10"/>
+            </g>
+            <g class="gauge-ring alt">
+              <circle cx="170" cy="170" r="128" fill="none" stroke="#e3a06f" stroke-opacity=".35" stroke-width="1.4" stroke-dasharray="1 9"/>
+            </g>
+            <circle cx="170" cy="170" r="104" fill="#ffffff" stroke="#e3defa" stroke-width="1.5"/>
+            <path d="M86 170a84 84 0 0 1 168 0" fill="none" stroke="#efe9f8" stroke-width="10" stroke-linecap="round"/>
+            <path class="gauge-spark" d="M86 170a84 84 0 0 1 60-80" fill="none" stroke="#c1693f" stroke-width="10" stroke-linecap="round"/>
+            <path class="gauge-spark" d="M226 170a84 84 0 0 1-22 56" fill="none" stroke="#4a2080" stroke-width="10" stroke-linecap="round" style="animation-delay:1.4s;"/>
+            <line class="gauge-needle" x1="170" y1="170" x2="170" y2="106" stroke="#341760" stroke-width="4" stroke-linecap="round"/>
+            <circle cx="170" cy="170" r="7" fill="#341760"/>
+            <text x="170" y="200" text-anchor="middle" class="gauge-temp">72°</text>
+            <text x="170" y="222" text-anchor="middle" class="gauge-label">PERFECTLY COMFORTABLE</text>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ HVAC SERVICES (the strong service) ============ -->
+  <section id="services">
+    <div class="wrap hvac-band">
+      <div style="padding:64px 48px;">
+        <div class="section-head" data-reveal>
+          <span class="kicker">What we do best</span>
+          <h2>HVAC, done right — the first time.</h2>
+          <p>Heating and cooling is the backbone of this company. Whether your system needs a same-week repair, a full replacement, or just a tune-up before the next heat wave, we show up, diagnose it straight, and fix it for keeps.</p>
+        </div>
+        <div class="hvac-grid" data-reveal="stagger">
+          <div class="hvac-card">
+            <div class="icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/><circle cx="12" cy="12" r="4"/></svg>
+            </div>
+            <h3>AC Repair</h3>
+            <p>Warm air, short-cycling, strange noises, frozen coils — we diagnose the real problem (not just the symptom) and get cool air moving again, often the same day you call.</p>
+          </div>
+          <div class="hvac-card">
+            <div class="icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h3"/></svg>
+            </div>
+            <h3>AC Installation</h3>
+            <p>Old unit on its last leg, or building new? We size the system to your home — not just the room it's going in — so it runs efficiently for years instead of straining through every August.</p>
+          </div>
+          <div class="hvac-card">
+            <div class="icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v6M12 22v-6M5 12H2M22 12h-3M7 7l-2-2M19 19l-2-2M7 17l-2 2M19 5l-2 2"/><circle cx="12" cy="12" r="3.5"/></svg>
+            </div>
+            <h3>Water Heater Replacement</h3>
+            <p>Cold showers, rusty water, or a unit that's just done — we'll walk you through tank vs. tankless, handle the swap cleanly, and make sure it's up to code before we leave.</p>
+          </div>
+          <div class="hvac-card">
+            <div class="icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>
+            </div>
+            <h3>Maintenance Plans</h3>
+            <p>Most breakdowns don't come out of nowhere — they're the ones nobody caught early. Seasonal tune-ups catch the small stuff before it becomes a no-heat call in January.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ BEYOND HVAC ============ -->
+  <section id="beyond">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <span class="kicker">One call covers more than HVAC</span>
+        <h2>Plumbing, electrical, and the jobs that don't fit a neat category.</h2>
+        <p>Homes and apartment communities don't break down one system at a time. We handle the rest of the punch list too — so you're not juggling three different contractors for one work order.</p>
+      </div>
+      <div class="beyond-grid" data-reveal="stagger">
+        <div class="beyond-card">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10M9 3v4M15 3v4M5 11h14l-1.5 8a2 2 0 0 1-2 1.7H8.5a2 2 0 0 1-2-1.7L5 11Z"/></svg></div>
+          <div><h4>Plumbing Work</h4><p>Leaks, clogs, fixture swaps, and the slow drips that turn into bigger problems if nobody calls it in. Straight diagnosis, clean repairs.</p></div>
+        </div>
+        <div class="beyond-card">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z"/></svg></div>
+          <div><h4>Electrical Work</h4><p>Outlets, fixtures, breakers, and troubleshooting the stuff that trips, flickers, or just stopped working. Done safely, done to code.</p></div>
+        </div>
+        <div class="beyond-card">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 1.4 1.4l3.6-3.6a4 4 0 0 1-5.7 5.7L4.4 19.4a2 2 0 0 1-2.8-2.8L11.2 7a4 4 0 0 1 5.7-5.7l-3.6 3.6a1 1 0 0 0 1.4 1.4Z"/></svg></div>
+          <div><h4>Handyman &amp; Make-Readies</h4><p>Apartment communities trust us for turn-unit make-readies and the everyday repair list — paint touch-ups, hardware, fixtures, drywall patches, and more, on a schedule that respects move-in dates.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SERVICE AREA ============ -->
+  <section id="area">
+    <div class="wrap">
+      <div class="area-section" data-reveal>
+        <div class="area-inner">
+          <div>
+            <span class="kicker">Where we work</span>
+            <h2>Rooted in Overland Park. Running across the KC Metro.</h2>
+            <p>We're based in Overland Park, Kansas, and we run jobs across the wider Kansas City Metro — including Lee's Summit and the communities in between. If you're not sure whether you're in range, just call. Chances are, we've already worked on a street near you.</p>
+            <div class="city-list">
+              <span class="city-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-5.4 7-11a7 7 0 1 0-14 0c0 5.6 7 11 7 11Z"/><circle cx="12" cy="11" r="2.4"/></svg> Overland Park</span>
+              <span class="city-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-5.4 7-11a7 7 0 1 0-14 0c0 5.6 7 11 7 11Z"/><circle cx="12" cy="11" r="2.4"/></svg> Lee's Summit</span>
+              <span class="city-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-5.4 7-11a7 7 0 1 0-14 0c0 5.6 7 11 7 11Z"/><circle cx="12" cy="11" r="2.4"/></svg> Kansas City Metro</span>
+            </div>
+          </div>
+          <div class="radar">
+            <svg viewBox="0 0 340 340" width="100%" height="100%" aria-hidden="true">
+              <circle class="radar-ring" cx="170" cy="170" r="60"/>
+              <circle class="radar-ring" cx="170" cy="170" r="105"/>
+              <circle class="radar-ring" cx="170" cy="170" r="150"/>
+              <g class="radar-sweep">
+                <path d="M170 170 L170 20 A150 150 0 0 1 276 64 Z" fill="url(#sweepGrad)"/>
+              </g>
+              <circle class="radar-pin" cx="170" cy="170" r="6" fill="#e3a06f"/>
+              <circle class="radar-pin p2" cx="225" cy="120" r="5" fill="#ffffff"/>
+              <circle class="radar-pin p3" cx="120" cy="225" r="5" fill="#ffffff"/>
+              <defs>
+                <radialGradient id="sweepGrad" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(170 170) rotate(45) scale(150)">
+                  <stop stop-color="#e3a06f" stop-opacity=".5"/>
+                  <stop offset="1" stop-color="#e3a06f" stop-opacity="0"/>
+                </radialGradient>
+              </defs>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ MAINTENANCE PLANS ============ -->
+  <section id="plans">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <span class="kicker">Stop paying for emergencies</span>
+        <h2>Maintenance plans that catch problems before they catch you.</h2>
+        <p>A fifteen-minute check twice a year is a lot cheaper than a dead system in the middle of a heat wave — or a frozen pipe in January. Pick the plan that matches how your home (or property) actually runs.</p>
+      </div>
+      <div class="plans-grid" data-reveal="stagger">
+        <div class="plan-card">
+          <span class="plan-tag">Homeowner</span>
+          <h3>Seasonal Check-Up</h3>
+          <p>For the homeowner who wants peace of mind without overpaying for it.</p>
+          <ul>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg> Spring &amp; fall HVAC tune-ups</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg> Filter &amp; airflow inspection</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg> Priority scheduling when something goes wrong</li>
+          </ul>
+        </div>
+        <div class="plan-card featured">
+          <span class="plan-tag">Most popular</span>
+          <h3>Whole-Home Comfort</h3>
+          <p>Everything in Seasonal Check-Up, plus the systems that quietly run your house.</p>
+          <ul>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg> Full HVAC + water heater inspection</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg> Discounted rates on repair work</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg> Faster scheduling, no overtime fees</li>
+          </ul>
+        </div>
+        <div class="plan-card">
+          <span class="plan-tag">Property managers</span>
+          <h3>Multi-Unit &amp; Make-Ready</h3>
+          <p>Built for apartment communities juggling turnovers, work orders, and tenant calls.</p>
+          <ul>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg> Scheduled make-ready turnarounds</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg> One vendor for HVAC, plumbing, electrical &amp; handyman</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg> Clear invoicing your office can actually track</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ REVIEWS ============ -->
+  <section id="reviews">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <span class="kicker">In their words</span>
+        <h2>What neighbors in the metro are saying.</h2>
+        <p>This space is reserved for real, verbatim reviews from Rose Legacy customers — pulled directly from Google, Facebook, or wherever your reviews live. Send over the quotes (with first name + city, and the platform they're from) and they'll be placed here exactly as written, nothing rewritten or invented.</p>
+      </div>
+      <div class="reviews-track" data-reveal="stagger">
+        <div class="review-card">
+          <span class="quote-mark">"</span>
+          <div class="stars">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 7h7l-5.5 4.5L18.5 21 12 16.5 5.5 21l2-7.5L2 9h7z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 7h7l-5.5 4.5L18.5 21 12 16.5 5.5 21l2-7.5L2 9h7z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 7h7l-5.5 4.5L18.5 21 12 16.5 5.5 21l2-7.5L2 9h7z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 7h7l-5.5 4.5L18.5 21 12 16.5 5.5 21l2-7.5L2 9h7z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 7h7l-5.5 4.5L18.5 21 12 16.5 5.5 21l2-7.5L2 9h7z"/></svg>
+          </div>
+          <blockquote>Your verbatim review goes here — paste it exactly as the customer wrote it, including any quirks of phrasing. That's what makes it real.</blockquote>
+          <div class="who">Reviewer name <span>City · Platform (e.g. Google Reviews)</span></div>
+        </div>
+        <div class="review-card">
+          <span class="quote-mark">"</span>
+          <div class="stars">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 7h7l-5.5 4.5L18.5 21 12 16.5 5.5 21l2-7.5L2 9h7z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 7h7l-5.5 4.5L18.5 21 12 16.5 5.5 21l2-7.5L2 9h7z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 7h7l-5.5 4.5L18.5 21 12 16.5 5.5 21l2-7.5L2 9h7z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 7h7l-5.5 4.5L18.5 21 12 16.5 5.5 21l2-7.5L2 9h7z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 7h7l-5.5 4.5L18.5 21 12 16.5 5.5 21l2-7.5L2 9h7z"/></svg>
+          </div>
+          <blockquote>Second verbatim quote slot — same idea. The goal is the actual voice of the people you've worked for, not marketing copy dressed up to sound like a review.</blockquote>
+          <div class="who">Reviewer name <span>City · Platform</span></div>
+        </div>
+        <div class="review-card">
+          <span class="quote-mark">"</span>
+          <div class="stars">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 7h7l-5.5 4.5L18.5 21 12 16.5 5.5 21l2-7.5L2 9h7z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 7h7l-5.5 4.5L18.5 21 12 16.5 5.5 21l2-7.5L2 9h7z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 7h7l-5.5 4.5L18.5 21 12 16.5 5.5 21l2-7.5L2 9h7z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 7h7l-5.5 4.5L18.5 21 12 16.5 5.5 21l2-7.5L2 9h7z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 7h7l-5.5 4.5L18.5 21 12 16.5 5.5 21l2-7.5L2 9h7z"/></svg>
+          </div>
+          <blockquote>Third slot — send as many as you'd like and this grid will grow to fit them. Even two strong, real quotes will outperform a wall of generic-sounding ones.</blockquote>
+          <div class="who">Reviewer name <span>City · Platform</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT ============ -->
+  <section id="contact">
+    <div class="wrap">
+      <div class="contact-band" data-reveal>
+        <div class="contact-inner">
+          <div>
+            <span class="kicker" style="color:var(--copper-light);">Get in touch</span>
+            <h2>Something not working right? Let's get it sorted.</h2>
+            <p>Call or email and tell us what's going on — a noise, a leak, a unit that won't kick on, a make-ready that needs to happen by Friday. We'll talk through it and get you on the schedule.</p>
+            <div class="contact-cta">
+              <a class="btn-primary" href="tel:+14849512588">
+                Call (484) 951-2588
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </a>
+            </div>
+          </div>
+          <div class="info-card">
+            <div class="info-row">
+              <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"/></svg></div>
+              <div><div class="label">Phone</div><div class="value"><a href="tel:+14849512588">(484) 951-2588</a></div></div>
+            </div>
+            <div class="info-row">
+              <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg></div>
+              <div><div class="label">Email</div><div class="value"><a href="mailto:roselegacyhs@icloud.com">roselegacyhs@icloud.com</a></div></div>
+            </div>
+            <div class="info-row">
+              <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-5.4 7-11a7 7 0 1 0-14 0c0 5.6 7 11 7 11Z"/><circle cx="12" cy="11" r="2.4"/></svg></div>
+              <div><div class="label">Based in</div><div class="value">Overland Park, KS</div></div>
+            </div>
+            <div class="info-row">
+              <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+              <div><div class="label">Hours</div><div class="value">Call anytime — we'll confirm our current hours and availability when you reach out</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap footer-inner">
+    <p>© <span id="year"></span> Rose Legacy Home Solutions LLC · Overland Park, KS · HVAC · Plumbing · Electrical · Handyman</p>
+    <div class="footer-links">
+      <a href="tel:+14849512588">(484) 951-2588</a>
+      <a href="mailto:roselegacyhs@icloud.com">roselegacyhs@icloud.com</a>
+      <a href="#top">Back to top ↑</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // header shadow on scroll
+  const header = document.getElementById('site-header');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 12);
+  }, { passive:true });
+
+  // scroll reveal
+  const revealEls = document.querySelectorAll('[data-reveal]');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.16, rootMargin: '0px 0px -60px 0px' });
+    revealEls.forEach(el => io.observe(el));
+  } else {
+    revealEls.forEach(el => el.classList.add('in'));
+  }
+</script>
+
+</body>
+</html>
