@@ -271,91 +271,124 @@
   /* ===== Gallery ===== */
   .gallery-grid{
     display:grid;
-    grid-template-columns:repeat(4,1fr);
-    grid-template-rows:auto;
-    gap:14px;
+    grid-template-columns:1.4fr 1fr 1fr 1.1fr;
+    grid-template-rows:280px 280px 240px;
+    gap:12px;
   }
+  /* Explicit placement for editorial layout */
+  .gi-1{ grid-column:1; grid-row:1/3; }   /* van at property — tall left */
+  .gi-2{ grid-column:2; grid-row:1; }     /* Goodman AC */
+  .gi-3{ grid-column:3; grid-row:1; }     /* AC brick house */
+  .gi-4{ grid-column:4; grid-row:1/3; }   /* van front — tall right */
+  .gi-5{ grid-column:2/4; grid-row:2; }   /* water heater — wide center */
+  .gi-6{ grid-column:1; grid-row:3; }     /* AC service */
+  .gi-7{ grid-column:2/4; grid-row:3; }   /* mechanical room — wide */
+  .gi-8{ grid-column:4; grid-row:3; }     /* fan motor */
+
   .gallery-item{
-    position:relative; overflow:hidden; border-radius:18px; cursor:pointer;
+    position:relative; overflow:hidden; border-radius:16px; cursor:pointer;
     background:var(--ink);
   }
-  /* Feature slots — large */
-  .gallery-item.feat-tall{ grid-row:span 2; }
-  .gallery-item.feat-wide{ grid-column:span 2; }
-
   .gallery-item img{
     width:100%; height:100%; object-fit:cover; display:block;
-    transition:transform .65s cubic-bezier(.2,.7,.2,1), filter .65s ease;
-    filter:brightness(.97);
-    aspect-ratio:4/3;
+    transition:transform .7s cubic-bezier(.2,.7,.2,1), filter .7s ease;
+    filter:brightness(.92);
   }
-  .gallery-item.feat-tall img{ aspect-ratio:3/4; height:100%; }
+  .gallery-item:hover img{ transform:scale(1.07); filter:brightness(.55); }
 
-  .gallery-item:hover img{ transform:scale(1.06); filter:brightness(.7); }
+  /* Persistent bottom gradient + tag always visible */
+  .gallery-item::after{
+    content:''; position:absolute; inset:0;
+    background:linear-gradient(0deg, rgba(20,8,50,.75) 0%, rgba(20,8,50,.1) 38%, transparent 58%);
+    pointer-events:none;
+  }
 
-  .gallery-overlay{
-    position:absolute; inset:0; display:flex; flex-direction:column;
-    justify-content:flex-end; padding:20px;
-    background:linear-gradient(0deg, rgba(36,16,70,.82) 0%, transparent 55%);
-    opacity:0; transition:opacity .4s ease;
+  /* Text panel — always at bottom, label always visible, description slides up on hover */
+  .g-panel{
+    position:absolute; bottom:0; left:0; right:0; z-index:2;
+    padding:16px 18px 18px;
+    display:flex; flex-direction:column; gap:4px;
   }
-  .gallery-item:hover .gallery-overlay{ opacity:1; }
-  .gallery-overlay .g-tag{
-    font-size:11px; letter-spacing:.16em; text-transform:uppercase; font-weight:700;
-    color:var(--copper-light); margin-bottom:5px;
+  .g-tag{
+    font-size:10.5px; letter-spacing:.18em; text-transform:uppercase; font-weight:700;
+    color:var(--copper-light);
+    display:inline-flex; align-items:center; gap:6px;
   }
-  .gallery-overlay .g-label{
-    font-family:'DM Serif Display',serif; font-size:17px; color:#fff; line-height:1.2;
+  .g-tag::before{
+    content:''; width:18px; height:2px; background:var(--copper-light);
+    display:inline-block; border-radius:2px;
   }
-  .gallery-overlay .g-zoom{
-    position:absolute; top:16px; right:16px; width:36px; height:36px;
-    border-radius:50%; background:rgba(255,255,255,.18); backdrop-filter:blur(4px);
+  .g-label{
+    font-family:'DM Serif Display', serif; font-size:15px; color:#fff; line-height:1.25;
+    transform:translateY(8px); opacity:0;
+    transition:transform .45s cubic-bezier(.2,.7,.2,1), opacity .45s ease;
+  }
+  .gallery-item:hover .g-label{ transform:translateY(0); opacity:1; }
+
+  /* Zoom icon top-right — appears on hover */
+  .g-zoom{
+    position:absolute; top:14px; right:14px; z-index:2;
+    width:34px; height:34px; border-radius:50%;
+    background:rgba(255,255,255,.15); backdrop-filter:blur(6px);
     display:flex; align-items:center; justify-content:center; color:#fff;
-    transition:background .3s ease, transform .3s ease;
+    opacity:0; transform:scale(.7) rotate(-15deg);
+    transition:opacity .4s ease, transform .4s cubic-bezier(.2,.7,.2,1), background .3s ease;
   }
-  .gallery-item:hover .g-zoom{ background:rgba(255,255,255,.32); transform:scale(1.1); }
-  .gallery-overlay .g-zoom svg{ width:16px; height:16px; }
+  .gallery-item:hover .g-zoom{ opacity:1; transform:scale(1) rotate(0deg); }
+  .gallery-item:hover .g-zoom:hover{ background:rgba(255,255,255,.3); transform:scale(1.12); }
+  .g-zoom svg{ width:15px; height:15px; }
 
   /* Lightbox */
   .lightbox{
     display:none; position:fixed; inset:0; z-index:200;
-    background:rgba(20,8,40,.92); backdrop-filter:blur(8px);
+    background:rgba(16,6,36,.94); backdrop-filter:blur(10px);
     align-items:center; justify-content:center; padding:24px;
   }
   .lightbox.open{ display:flex; }
-  .lightbox-inner{ position:relative; max-width:1000px; width:100%; }
-  .lightbox-inner img{ width:100%; border-radius:16px; max-height:88vh; object-fit:contain; }
+  .lightbox-inner{ position:relative; max-width:1060px; width:100%; }
+  .lightbox-inner img{ width:100%; border-radius:14px; max-height:86vh; object-fit:contain; box-shadow:0 30px 80px rgba(0,0,0,.5); }
   .lightbox-caption{
-    color:rgba(255,255,255,.78); font-size:14px; text-align:center; margin-top:14px;
-    font-style:italic;
+    color:rgba(255,255,255,.7); font-size:13.5px; text-align:center; margin-top:16px;
+    letter-spacing:.04em;
   }
+  .lightbox-caption strong{ color:var(--copper-light); font-weight:600; }
   .lightbox-close{
-    position:absolute; top:-14px; right:-14px; width:42px; height:42px;
-    border-radius:50%; background:#fff; border:none; cursor:pointer; font-size:20px;
+    position:absolute; top:-16px; right:-16px; width:44px; height:44px;
+    border-radius:50%; background:#fff; border:none; cursor:pointer; font-size:18px;
     display:flex; align-items:center; justify-content:center; color:var(--purple-deep);
-    box-shadow:0 6px 20px rgba(0,0,0,.3); transition:transform .25s ease;
+    box-shadow:0 8px 24px rgba(0,0,0,.35); transition:transform .3s cubic-bezier(.2,.7,.2,1);
+    font-weight:700;
   }
-  .lightbox-close:hover{ transform:rotate(90deg) scale(1.1); }
+  .lightbox-close:hover{ transform:rotate(90deg) scale(1.12); }
   .lb-nav{
     position:absolute; top:50%; transform:translateY(-50%);
-    width:44px; height:44px; border-radius:50%; background:rgba(255,255,255,.14);
-    border:none; cursor:pointer; color:#fff; display:flex; align-items:center; justify-content:center;
-    backdrop-filter:blur(4px); transition:background .25s ease, transform .25s ease;
+    width:46px; height:46px; border-radius:50%; background:rgba(255,255,255,.12);
+    border:1px solid rgba(255,255,255,.2); cursor:pointer; color:#fff;
+    display:flex; align-items:center; justify-content:center;
+    backdrop-filter:blur(6px); transition:background .25s ease, transform .25s ease;
   }
-  .lb-nav:hover{ background:rgba(255,255,255,.28); transform:translateY(-50%) scale(1.08); }
-  .lb-nav.prev{ left:-58px; }
-  .lb-nav.next{ right:-58px; }
+  .lb-nav:hover{ background:rgba(255,255,255,.24); transform:translateY(-50%) scale(1.1); }
+  .lb-nav.prev{ left:-62px; }
+  .lb-nav.next{ right:-62px; }
   .lb-nav svg{ width:20px; height:20px; }
 
-  @media (max-width:900px){
-    .gallery-grid{ grid-template-columns:repeat(2,1fr); }
-    .gallery-item.feat-tall{ grid-row:span 1; }
-    .gallery-item.feat-wide{ grid-column:span 1; }
-    .lb-nav.prev{ left:4px; }
-    .lb-nav.next{ right:4px; }
+  @media (max-width:1000px){
+    .gallery-grid{
+      grid-template-columns:1fr 1fr;
+      grid-template-rows:auto;
+    }
+    .gi-1,.gi-2,.gi-3,.gi-4,.gi-5,.gi-6,.gi-7,.gi-8{
+      grid-column:auto; grid-row:auto;
+    }
+    .gi-5,.gi-7{ grid-column:span 2; }
+    .gallery-item img{ aspect-ratio:4/3; height:auto; }
+    .lb-nav.prev{ left:6px; }
+    .lb-nav.next{ right:6px; }
   }
-  @media (max-width:540px){
+  @media (max-width:580px){
     .gallery-grid{ grid-template-columns:1fr; }
+    .gi-5,.gi-7{ grid-column:span 1; }
+    .g-label{ opacity:1; transform:translateY(0); }
   }
 
   /* ===== Reviews ===== */
@@ -671,78 +704,75 @@
 
       <div class="gallery-grid" data-reveal="stagger">
 
-        <!-- Row 1: van (tall feature) + 2 installs stacked -->
-        <div class="gallery-item feat-tall" data-img="photos/IMG_9156.jpg" data-tag="Our Team" data-label="Rose Legacy on the job, KC Metro">
+        <div class="gallery-item gi-1" data-img="photos/IMG_9156.jpg" data-tag="Our Team" data-label="Rose Legacy on the job, KC Metro">
           <img src="photos/IMG_9156.jpg" alt="Rose Legacy branded service van at a KC Metro property" loading="lazy"/>
-          <div class="gallery-overlay">
-            <span class="g-zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span>
+          <span class="g-zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span>
+          <div class="g-panel">
             <span class="g-tag">Our Team</span>
             <span class="g-label">Rose Legacy on the job, KC Metro</span>
           </div>
         </div>
 
-        <div class="gallery-item" data-img="photos/IMG_3116.jpg" data-tag="AC Installation" data-label="New Goodman unit — clean install">
+        <div class="gallery-item gi-2" data-img="photos/IMG_3116.jpg" data-tag="AC Installation" data-label="New Goodman unit — clean install">
           <img src="photos/IMG_3116.jpg" alt="New Goodman AC unit installed at residential property" loading="lazy"/>
-          <div class="gallery-overlay">
-            <span class="g-zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span>
+          <span class="g-zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span>
+          <div class="g-panel">
             <span class="g-tag">AC Installation</span>
             <span class="g-label">New Goodman unit — clean install</span>
           </div>
         </div>
 
-        <div class="gallery-item" data-img="photos/IMG_9329.jpg" data-tag="AC Installation" data-label="Residential AC — Overland Park">
+        <div class="gallery-item gi-3" data-img="photos/IMG_9329.jpg" data-tag="AC Installation" data-label="Residential AC — Overland Park">
           <img src="photos/IMG_9329.jpg" alt="AC unit installed at brick residential home" loading="lazy"/>
-          <div class="gallery-overlay">
-            <span class="g-zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span>
+          <span class="g-zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span>
+          <div class="g-panel">
             <span class="g-tag">AC Installation</span>
             <span class="g-label">Residential AC — Overland Park</span>
           </div>
         </div>
 
-        <!-- Row 1 col 4 / Row 2 fill: wide brand van -->
-        <div class="gallery-item feat-tall" data-img="photos/IMG_8417.jpg" data-tag="Our Fleet" data-label="Rose Legacy service van">
+        <div class="gallery-item gi-4" data-img="photos/IMG_8417.jpg" data-tag="Our Fleet" data-label="Rose Legacy service van">
           <img src="photos/IMG_8417.jpg" alt="Rose Legacy service van front with branded hood logo" loading="lazy"/>
-          <div class="gallery-overlay">
-            <span class="g-zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span>
+          <span class="g-zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span>
+          <div class="g-panel">
             <span class="g-tag">Our Fleet</span>
             <span class="g-label">Rose Legacy service van</span>
           </div>
         </div>
 
-        <!-- Row 2: water heater wide + service + detail -->
-        <div class="gallery-item feat-wide" data-img="photos/IMG_7684.jpg" data-tag="Water Heater" data-label="Rheem water heater + HVAC — full system replacement">
+        <div class="gallery-item gi-5" data-img="photos/IMG_7684.jpg" data-tag="Water Heater Replacement" data-label="Rheem water heater + HVAC — full system">
           <img src="photos/IMG_7684.jpg" alt="Rheem water heater and HVAC system installed side by side" loading="lazy"/>
-          <div class="gallery-overlay">
-            <span class="g-zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span>
+          <span class="g-zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span>
+          <div class="g-panel">
             <span class="g-tag">Water Heater Replacement</span>
             <span class="g-label">Rheem water heater + HVAC — full system</span>
           </div>
         </div>
 
-        <div class="gallery-item" data-img="photos/IMG_3114.jpg" data-tag="AC Service" data-label="Refrigerant charge & system diagnostics">
+        <div class="gallery-item gi-6" data-img="photos/IMG_3114.jpg" data-tag="AC Service" data-label="Refrigerant charge &amp; diagnostics">
           <img src="photos/IMG_3114.jpg" alt="AC unit being serviced with manifold gauges and refrigerant tank" loading="lazy"/>
-          <div class="gallery-overlay">
-            <span class="g-zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span>
+          <span class="g-zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span>
+          <div class="g-panel">
             <span class="g-tag">AC Service</span>
-            <span class="g-label">Refrigerant charge & system diagnostics</span>
+            <span class="g-label">Refrigerant charge &amp; diagnostics</span>
           </div>
         </div>
 
-        <div class="gallery-item" data-img="photos/IMG_9328.jpg" data-tag="Commercial" data-label="Mechanical room — multi-unit install">
+        <div class="gallery-item gi-7" data-img="photos/IMG_9328.jpg" data-tag="Commercial / Multi-Unit" data-label="Mechanical room — complex install">
           <img src="photos/IMG_9328.jpg" alt="HVAC mechanical room with piping and equipment installation" loading="lazy"/>
-          <div class="gallery-overlay">
-            <span class="g-zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span>
+          <span class="g-zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span>
+          <div class="g-panel">
             <span class="g-tag">Commercial / Multi-Unit</span>
             <span class="g-label">Mechanical room — complex install</span>
           </div>
         </div>
 
-        <div class="gallery-item" data-img="photos/IMG_9692.jpg" data-tag="AC Repair" data-label="Fan motor replacement — precision work">
+        <div class="gallery-item gi-8" data-img="photos/IMG_9692.jpg" data-tag="AC Repair" data-label="Fan motor — precision work">
           <img src="photos/IMG_9692.jpg" alt="Fan motor replacement inside AC condenser unit" loading="lazy"/>
-          <div class="gallery-overlay">
-            <span class="g-zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span>
+          <span class="g-zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span>
+          <div class="g-panel">
             <span class="g-tag">AC Repair</span>
-            <span class="g-label">Fan motor replacement — precision work</span>
+            <span class="g-label">Fan motor — precision work</span>
           </div>
         </div>
 
