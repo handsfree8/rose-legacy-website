@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://rose-legacy-website.vercel.app/sitemap.xml
+Sitemap: https://roselegacyhs.com/sitemap.xml
