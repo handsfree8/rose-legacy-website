@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Rose Legacy Home Solutions LLC — HVAC, Plumbing & Electrical · Overland Park & Lee's Summit</title>
-<meta name="description" content="Rose Legacy Home Solutions LLC keeps Kansas City Metro homes and apartment communities running — HVAC repair & installation, water heater replacement, plumbing, electrical, and make-ready handyman work. Overland Park, Lee's Summit, and the surrounding KC Metro."/>
+<title>HVAC & Plumbing Overland Park | Rose Legacy Home Solutions</title>
+<meta name="description" content="Rose Legacy Home Solutions — HVAC repair & installation, plumbing, electrical and make-ready work across Overland Park, Lee's Summit & KC Metro. Call (816) 298-4828."/>
 <meta name="keywords" content="HVAC repair Overland Park, plumber Lee's Summit, water heater replacement Kansas City, electrical contractor KC Metro, handyman, AC installation, furnace repair, make-ready apartment, property maintenance Kansas City"/>
 <meta name="robots" content="index, follow"/>
 <meta name="author" content="Rose Legacy Home Solutions LLC"/>
@@ -28,7 +28,10 @@
 <!-- Local business geo signals -->
 <meta name="geo.region" content="US-KS"/>
 <meta name="geo.placename" content="Overland Park, Kansas"/>
+<meta name="geo.position" content="38.9822;-94.6708"/>
+<meta name="ICBM" content="38.9822, -94.6708"/>
 <meta name="theme-color" content="#4a2080"/>
+<link rel="sitemap" type="application/xml" href="/sitemap.xml"/>
 
 <!-- Structured data: LocalBusiness (helps Google show name, phone, hours, service area) -->
 <script type="application/ld+json">
@@ -36,6 +39,7 @@
   "@context": "https://schema.org",
   "@type": "HVACBusiness",
   "name": "Rose Legacy Home Solutions LLC",
+  "description": "HVAC repair & installation, plumbing, electrical, water heater replacement, and make-ready handyman work across Overland Park, Lee's Summit, and the Kansas City Metro. Locally owned, available 24/7.",
   "image": "https://roselegacyhs.com/logo.png",
   "logo": "https://roselegacyhs.com/logo.png",
   "url": "https://roselegacyhs.com/",
@@ -47,6 +51,11 @@
     "addressLocality": "Overland Park",
     "addressRegion": "KS",
     "addressCountry": "US"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 38.9822,
+    "longitude": -94.6708
   },
   "areaServed": [
     { "@type": "City", "name": "Overland Park" },
@@ -196,9 +205,14 @@
   @keyframes pulse{ 0%,100%{ transform:scale(1); opacity:1;} 50%{ transform:scale(1.7); opacity:.4; } }
   .hero h1{
     font-size:clamp(38px, 5.4vw, 64px); line-height:1.07; color:var(--purple-deep);
-    letter-spacing:-.02em;
+    letter-spacing:-.02em; font-family:'DM Serif Display', serif; font-weight:400;
   }
   .hero h1 em{ font-style:italic; color:var(--copper); }
+  .hero h1 .hero-kicker{
+    display:block; font-family:'DM Sans', sans-serif; font-weight:700;
+    font-size:clamp(15px, 1.8vw, 19px); letter-spacing:.01em; line-height:1.3;
+    color:var(--copper); margin-bottom:16px;
+  }
   .hero p.lede{ margin-top:24px; font-size:18px; max-width:50ch; }
   .hero-actions{ margin-top:36px; display:flex; align-items:center; gap:28px; flex-wrap:wrap; }
   .btn-primary{
@@ -550,7 +564,7 @@
 <header id="site-header">
   <div class="nav">
     <a class="brand" href="#top">
-      <img class="brand-mark" src="logo.png" alt="Rose Legacy Home Solutions logo"/>
+      <img class="brand-mark" src="logo.png" alt="Rose Legacy Home Solutions logo" width="52" height="52" fetchpriority="high"/>
       <span>
         <span class="brand-name" style="display:block;">Rose Legacy</span>
         <span class="brand-sub">Home Solutions LLC</span>
@@ -562,7 +576,6 @@
       <a href="#plans">Maintenance Plans</a>
       <a href="#area">Service Area</a>
       <a href="#gallery">Gallery</a>
-      <a href="#reviews">Reviews</a>
       <a href="#contact">Contact</a>
     </nav>
     <div class="nav-right">
@@ -596,7 +609,7 @@
     <div class="wrap hero-grid">
       <div data-reveal>
         <span class="eyebrow"><span class="dot"></span> Overland Park · Lee's Summit · KC Metro</span>
-        <h1>It's 97° outside and your air just quit. <em>We pick up the phone.</em></h1>
+        <h1><span class="hero-kicker">HVAC Repair &amp; Installation in Overland Park, KS</span>It's 97° outside and your air just quit. <em>We pick up the phone.</em></h1>
         <p class="lede">Rose Legacy Home Solutions LLC keeps Kansas City Metro homes — and the property managers who run them — comfortable through every season. HVAC is the work we're known for. Plumbing, electrical, and handyman make-readies round out the rest, all from one crew you can actually reach.</p>
         <div class="hero-actions">
           <a class="btn-primary" href="tel:+18162984828">
@@ -895,54 +908,7 @@
     </div>
   </div>
 
-  <!-- ============ REVIEWS ============ -->
-  <section id="reviews">
-    <div class="wrap">
-      <div class="section-head" data-reveal>
-        <span class="kicker">In their words</span>
-        <h2>What neighbors in the metro are saying.</h2>
-        <p>This space is reserved for real, verbatim reviews from Rose Legacy customers — pulled directly from Google, Facebook, or wherever your reviews live. Send over the quotes (with first name + city, and the platform they're from) and they'll be placed here exactly as written, nothing rewritten or invented.</p>
-      </div>
-      <div class="reviews-track" data-reveal="stagger">
-        <div class="review-card">
-          <span class="quote-mark">"</span>
-          <div class="stars">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 7h7l-5.5 4.5L18.5 21 12 16.5 5.5 21l2-7.5L2 9h7z"/></svg>
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 7h7l-5.5 4.5L18.5 21 12 16.5 5.5 21l2-7.5L2 9h7z"/></svg>
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 7h7l-5.5 4.5L18.5 21 12 16.5 5.5 21l2-7.5L2 9h7z"/></svg>
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 7h7l-5.5 4.5L18.5 21 12 16.5 5.5 21l2-7.5L2 9h7z"/></svg>
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 7h7l-5.5 4.5L18.5 21 12 16.5 5.5 21l2-7.5L2 9h7z"/></svg>
-          </div>
-          <blockquote>Your verbatim review goes here — paste it exactly as the customer wrote it, including any quirks of phrasing. That's what makes it real.</blockquote>
-          <div class="who">Reviewer name <span>City · Platform (e.g. Google Reviews)</span></div>
-        </div>
-        <div class="review-card">
-          <span class="quote-mark">"</span>
-          <div class="stars">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 7h7l-5.5 4.5L18.5 21 12 16.5 5.5 21l2-7.5L2 9h7z"/></svg>
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 7h7l-5.5 4.5L18.5 21 12 16.5 5.5 21l2-7.5L2 9h7z"/></svg>
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 7h7l-5.5 4.5L18.5 21 12 16.5 5.5 21l2-7.5L2 9h7z"/></svg>
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 7h7l-5.5 4.5L18.5 21 12 16.5 5.5 21l2-7.5L2 9h7z"/></svg>
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 7h7l-5.5 4.5L18.5 21 12 16.5 5.5 21l2-7.5L2 9h7z"/></svg>
-          </div>
-          <blockquote>Second verbatim quote slot — same idea. The goal is the actual voice of the people you've worked for, not marketing copy dressed up to sound like a review.</blockquote>
-          <div class="who">Reviewer name <span>City · Platform</span></div>
-        </div>
-        <div class="review-card">
-          <span class="quote-mark">"</span>
-          <div class="stars">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 7h7l-5.5 4.5L18.5 21 12 16.5 5.5 21l2-7.5L2 9h7z"/></svg>
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 7h7l-5.5 4.5L18.5 21 12 16.5 5.5 21l2-7.5L2 9h7z"/></svg>
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 7h7l-5.5 4.5L18.5 21 12 16.5 5.5 21l2-7.5L2 9h7z"/></svg>
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 7h7l-5.5 4.5L18.5 21 12 16.5 5.5 21l2-7.5L2 9h7z"/></svg>
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 7h7l-5.5 4.5L18.5 21 12 16.5 5.5 21l2-7.5L2 9h7z"/></svg>
-          </div>
-          <blockquote>Third slot — send as many as you'd like and this grid will grow to fit them. Even two strong, real quotes will outperform a wall of generic-sounding ones.</blockquote>
-          <div class="who">Reviewer name <span>City · Platform</span></div>
-        </div>
-      </div>
-    </div>
-  </section>
+  <!-- ============ REVIEWS (hidden until real customer reviews are available) ============ -->
 
   <!-- ============ CONTACT ============ -->
   <section id="contact">
