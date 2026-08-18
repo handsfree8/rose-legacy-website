@@ -506,3 +506,5 @@
 .gr-count{ font-size:13.5px; color:var(--ink-soft); letter-spacing:.02em; }
 .gr-cta p{ margin:0 0 18px; font-size:18px; color:var(--ink); max-width:40ch; }
 @media (max-width:720px){ .gr-cta p{ margin-left:auto; margin-right:auto; } }
+.gr-actions{ display:flex; align-items:center; gap:22px; flex-wrap:wrap; }
+@media (max-width:720px){ .gr-actions{ justify-content:center; } }
