@@ -45,7 +45,7 @@ for (const accepted of [true,'true']) test(`accepted ${typeof accepted} shows co
 });
 for (const [name, fetch] of [
   ['provider rejection',async()=>({ok:true,json:async()=>({success:false})})],
-  ['string rejection',async()=>({ok:true,json:async()=>({success:'false'})})],
+  ['activation required (observed provider response)',async()=>({ok:true,json:async()=>({success:'false',message:"This form needs Activation. We've sent you an email containing an 'Activate Form' link. Just click it and your form will be actived!"})})],
   ['HTTP failure',async()=>({ok:false,json:async()=>({success:true})})],
   ['invalid JSON',async()=>({ok:true,json:async()=>{throw Error('invalid JSON');}})],
   ['network failure',async()=>{throw Error('offline');}],

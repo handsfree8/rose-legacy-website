@@ -31,7 +31,7 @@ For basic local viewing run `python3 -m http.server 8000`. With that server, ope
 
 ## Service requests
 
-The owner-approved FormSubmit integration emails `roselegacyhs@icloud.com`. Name, phone, service and city/ZIP are required; email and description are optional. The owner confirmed activation and receipt of the original form's test email on September 19, 2026.
+The owner-approved FormSubmit integration emails `roselegacyhs@icloud.com`. Name, phone, service and city/ZIP are required; email and description are optional. The owner confirmed activation and receipt of the original local-preview form's test email on September 19, 2026. Activation is tied to the form's origin: localhost activation does not prove the production domain is active. The production AJAX test returned `success: false` with `This form needs Activation`; FormSubmit sent a separate activation email for `https://roselegacyhs.com/`. Activate the exact production origin and verify it with a real request before declaring delivery healthy.
 
 With JavaScript, `assets/contact.js` submits JSON to the documented AJAX endpoint without leaving the page. A persistent dismissible notice reports pending, accepted or uncertain delivery. Only HTTP success plus an explicit `success: true` (boolean or string) clears the form. Provider rejection, malformed responses, network failure and a 20-second timeout preserve all entered data. Controls are disabled while sending to prevent duplicate requests and edits being lost. No automatic retries are made; timeout messaging explains that acceptance may already have happened. Honeypot and the provider's filtering remain in use; AJAX does not display the hosted CAPTCHA screen. No `_captcha=false` override is sent.
 
