@@ -504,8 +504,13 @@
               <div class="form-field form-wide"><label for="request-message">What can we help with? <span>(optional)</span></label><textarea id="request-message" name="message" rows="3" maxlength="2000" placeholder="A brief description of the issue or project"></textarea></div>
             </div>
             <p class="form-note">We'll use these details to respond to your request. Please leave out payment details and other sensitive information.</p>
-            <button class="btn-primary form-submit" type="submit">Send service request <span aria-hidden="true">↗</span></button>
-            <p class="form-note">Next, complete a quick spam check. Your request is emailed to our team through <a href="https://formsubmit.co/privacy.pdf" target="_blank" rel="noopener noreferrer">FormSubmit</a>. An appointment is confirmed only after we contact you.</p>
+            <div class="request-notice" id="request-notice" role="status" aria-live="polite" aria-atomic="true" hidden>
+              <span class="notice-mark" aria-hidden="true">✓</span>
+              <div><strong id="request-notice-title"></strong><p id="request-notice-message"></p></div>
+              <button id="request-notice-close" class="notice-close" type="button" aria-label="Dismiss notification">×</button>
+            </div>
+            <button class="btn-primary form-submit" type="submit"><span id="request-submit-label">Send service request</span> <span aria-hidden="true">↗</span></button>
+            <p class="form-note">Your request is emailed to our team through <a href="https://formsubmit.co/privacy.pdf" target="_blank" rel="noopener noreferrer">FormSubmit</a>. An appointment is confirmed only after we contact you.</p>
           </form>
         </div>
       </div>
@@ -538,6 +543,7 @@
 
 <button class="video-control" id="video-control" type="button" aria-label="Play background video" hidden><span data-video-icon aria-hidden="true">▶</span><span data-video-label>Play background</span></button>
 <script src="/assets/site.js" defer></script>
+<script src="/assets/contact.js" defer></script>
 
 </body>
 </html>

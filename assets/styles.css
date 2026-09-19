@@ -381,3 +381,15 @@ footer { position: relative; padding: 40px 0 92px; border-top: 1px solid var(--l
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation: none !important; transition: none !important; }
 }
+
+/* A compact, persistent confirmation keeps the visitor in the page. */
+.request-notice { display: flex; align-items: start; gap: 12px; margin-top: 20px; padding: 18px 12px 18px 18px; background: #2e4036; border: 1px solid #8fb49a; border-radius: 4px; }
+.request-notice strong { display: block; font-size: 14px; line-height: 1.5; }
+.request-notice p { font-size: 12px; line-height: 1.7; margin-top: 6px; color: var(--cream); }
+.notice-mark { color: #bce9c7; font-size: 20px; }
+.notice-close { flex: 0 0 44px; width: 44px; height: 44px; margin: -10px -4px 0 0; border: 0; border-radius: 4px; background: transparent; font-size: 26px; }
+.notice-close:hover { background: #ffffff15; }
+.request-notice[data-state="error"] { background: #492e33; border-color: #dca8a5; }
+.request-notice[data-state="sending"] { background: #33223c; border-color: var(--line); }
+.request-notice:not([data-state="success"]) .notice-mark { display: none; }
+.form-submit:disabled { cursor: wait; opacity: .75; }
