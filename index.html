@@ -34,25 +34,19 @@
 <meta name="theme-color" content="#211329"/>
 <link rel="sitemap" type="application/xml" href="/sitemap.xml"/>
 
-<!-- Structured data: LocalBusiness (helps Google show name, phone, hours, service area) -->
+<!-- Business availability confirmed by the owner. Reviews link to their live source. -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "HVACBusiness",
   "name": "Rose Legacy Home Solutions LLC",
-  "description": "HVAC repair & installation, plumbing, electrical, water heater replacement, and make-ready handyman work across Overland Park, Lee's Summit, and the Kansas City Metro. Locally owned, available 24/7.",
+  "description": "HVAC repair & installation, plumbing, electrical, water heater replacement, and make-ready handyman work across Overland Park, Lee's Summit, and the Kansas City Metro. Locally owned. Available 24 hours a day, 7 days a week.",
   "image": "https://roselegacyhs.com/logo.png",
   "logo": "https://roselegacyhs.com/logo.png",
   "url": "https://roselegacyhs.com/",
   "telephone": "+1-816-298-4828",
   "email": "roselegacyhs@icloud.com",
   "priceRange": "$$",
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": "5.0",
-    "reviewCount": "9",
-    "bestRating": "5"
-  },
   "address": {
     "@type": "PostalAddress",
     "addressLocality": "Overland Park",
@@ -65,16 +59,19 @@
     "longitude": -94.6708
   },
   "areaServed": [
-    { "@type": "City", "name": "Overland Park" },
-    { "@type": "City", "name": "Lee's Summit" },
-    { "@type": "City", "name": "Kansas City" }
+    {
+      "@type": "City",
+      "name": "Overland Park"
+    },
+    {
+      "@type": "City",
+      "name": "Lee's Summit"
+    },
+    {
+      "@type": "City",
+      "name": "Kansas City"
+    }
   ],
-  "openingHoursSpecification": {
-    "@type": "OpeningHoursSpecification",
-    "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
-    "opens": "00:00",
-    "closes": "23:59"
-  },
   "sameAs": [
     "https://www.facebook.com/profile.php?id=61576740384735",
     "https://www.instagram.com/roselegacyhvac"
@@ -83,12 +80,41 @@
     "@type": "OfferCatalog",
     "name": "Home Services",
     "itemListElement": [
-      { "@type": "OfferCatalog", "name": "HVAC repair & installation" },
-      { "@type": "OfferCatalog", "name": "Water heater replacement" },
-      { "@type": "OfferCatalog", "name": "Plumbing" },
-      { "@type": "OfferCatalog", "name": "Electrical" },
-      { "@type": "OfferCatalog", "name": "Make-ready handyman work" }
+      {
+        "@type": "OfferCatalog",
+        "name": "HVAC repair & installation"
+      },
+      {
+        "@type": "OfferCatalog",
+        "name": "Water heater replacement"
+      },
+      {
+        "@type": "OfferCatalog",
+        "name": "Plumbing"
+      },
+      {
+        "@type": "OfferCatalog",
+        "name": "Electrical"
+      },
+      {
+        "@type": "OfferCatalog",
+        "name": "Make-ready handyman work"
+      }
     ]
+  },
+  "openingHoursSpecification": {
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+      "Sunday"
+    ],
+    "opens": "00:00",
+    "closes": "23:59"
   }
 }
 </script>
@@ -131,7 +157,7 @@
     </nav>
     <div class="nav-right">
       <div class="social-icons">
-        <a class="wsp" href="https://wa.me/14849512588" target="_blank" rel="noopener noreferrer" aria-label="Message us on WhatsApp">
+        <a class="wsp" href="https://wa.me/14849512588" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp: (484) 951-2588">
           <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.77.46 3.45 1.34 4.95L2 22l5.29-1.39a9.9 9.9 0 0 0 4.75 1.21h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2Zm5.78 14.04c-.24.68-1.4 1.32-1.93 1.39-.49.07-1.12.1-1.81-.11-.42-.13-.95-.3-1.64-.59-2.88-1.24-4.76-4.13-4.9-4.32-.14-.19-1.18-1.57-1.18-3 0-1.42.75-2.12 1.01-2.41.27-.29.58-.36.78-.36.19 0 .39 0 .56.01.18.01.42-.07.65.5.24.58.81 2 .88 2.14.07.14.12.31.02.5-.1.19-.15.31-.29.48-.15.17-.31.37-.44.5-.15.14-.3.3-.13.59.17.29.76 1.25 1.63 2.02 1.12.99 2.06 1.31 2.36 1.45.29.15.46.13.63-.07.17-.21.72-.84.91-1.13.19-.29.39-.24.65-.14.27.1 1.69.8 1.98.94.29.15.48.21.55.34.07.13.07.74-.17 1.42Z"/></svg>
         </a>
         <a class="fb" href="https://www.facebook.com/profile.php?id=61576740384735" target="_blank" rel="noopener noreferrer" aria-label="Visit our Facebook page">
@@ -178,7 +204,7 @@
         <div class="section-head" data-reveal>
           <span class="kicker">What we do best</span>
           <h2>Expert care.<em>Every season.</em></h2>
-          <p>Heating and cooling is the backbone of this company. Whether your system needs a same-week repair, a full replacement, or just a tune-up before the next heat wave, we show up, diagnose it straight, and fix it for keeps.</p>
+          <p>Heating and cooling is the backbone of this company. Whether your system needs a repair, a full replacement, or just a tune-up before the next heat wave, we show up, diagnose it straight, and fix it for keeps.</p>
         </div>
         <div class="hvac-grid" data-reveal="stagger">
           <div class="hvac-card">
@@ -186,7 +212,7 @@
               <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/><circle cx="12" cy="12" r="4"/></svg>
             </div>
             <h3>AC Repair</h3>
-            <p>Warm air, short-cycling, strange noises, frozen coils — we diagnose the real problem (not just the symptom) and get cool air moving again, often the same day you call.</p>
+            <p>Warm air, short-cycling, strange noises, frozen coils — we diagnose the real problem (not just the symptom) and get cool air moving again. Contact us for the next available appointment.</p>
             <a class="card-link" href="/hvac-repair-overland-park">HVAC repair in Overland Park →</a>
           </div>
           <div class="hvac-card">
@@ -419,23 +445,16 @@
     <div class="wrap">
       <div class="section-head" data-reveal>
         <span class="kicker">In their words</span>
-        <h2>Rated 5.0 by neighbors across the metro.</h2>
-        <p>Homeowners and property managers across Overland Park, Lee's Summit and the KC Metro trust Rose Legacy for HVAC, plumbing and electrical work. Here's what they're saying on Google.</p>
+        <h2>Comfort earns its reputation.</h2>
+        <p>Explore feedback from homeowners and property managers on Google, and see their experiences with Rose Legacy firsthand.</p>
       </div>
       <div class="google-rating" data-reveal>
         <div class="gr-score">
-          <span class="gr-num">5.0</span>
-          <div class="gr-stars" aria-label="5 out of 5 stars">
-            <svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 7h7l-5.5 4.5L18.5 21 12 16.5 5.5 21l2-7.5L2 9h7z"/></svg>
-            <svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 7h7l-5.5 4.5L18.5 21 12 16.5 5.5 21l2-7.5L2 9h7z"/></svg>
-            <svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 7h7l-5.5 4.5L18.5 21 12 16.5 5.5 21l2-7.5L2 9h7z"/></svg>
-            <svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 7h7l-5.5 4.5L18.5 21 12 16.5 5.5 21l2-7.5L2 9h7z"/></svg>
-            <svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 7h7l-5.5 4.5L18.5 21 12 16.5 5.5 21l2-7.5L2 9h7z"/></svg>
-          </div>
-          <span class="gr-count">Based on 9 Google reviews</span>
+          <span class="review-source">Google</span>
+          <span class="gr-count">Customer reviews</span>
         </div>
         <div class="gr-cta">
-          <p>See the full set of reviews — or leave one after your service.</p>
+          <p>Read the latest reviews and current rating directly on Google — or share your experience after your service.</p>
           <div class="gr-actions">
             <a class="btn-primary" href="https://g.page/r/CfQZgGsk7bBTEAI" target="_blank" rel="noopener noreferrer">
               Read our Google reviews
@@ -456,7 +475,7 @@
           <div>
             <span class="kicker" style="color:var(--copper-light);">Get in touch</span>
             <h2>Come home<em>to comfort.</em></h2>
-            <p>Call or email and tell us what's going on — a noise, a leak, a unit that won't kick on, a make-ready that needs to happen by Friday. We'll talk through it and get you on the schedule.</p>
+            <p>Call or email and tell us what's going on — a noise, a leak, a unit that won't kick on, a make-ready that needs to happen by Friday. We'll discuss the next steps and confirm your appointment.</p>
             <div class="contact-cta">
               <a class="btn-primary" href="tel:+18162984828">
                 Call (816) 298-4828
@@ -465,6 +484,9 @@
             </div>
           </div>
           <div class="info-card">
+            <div class="info-row">
+              <div><div class="label">WhatsApp · separate messaging line</div><div class="value"><a href="https://wa.me/14849512588" target="_blank" rel="noopener noreferrer">(484) 951-2588 ↗</a></div></div>
+            </div>
             <div class="info-row">
               <div class="icon"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"/></svg></div>
               <div><div class="label">Phone</div><div class="value"><a href="tel:+18162984828">(816) 298-4828</a></div></div>
@@ -479,7 +501,7 @@
             </div>
             <div class="info-row">
               <div class="icon"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
-              <div><div class="label">Hours</div><div class="value">Call anytime — we'll confirm our current hours and availability when you reach out</div></div>
+              <div><div class="label">Hours</div><div class="value">Available 24 hours a day, 7 days a week. Call to confirm arrival time.</div></div>
             </div>
           </div>
         </div>
@@ -493,7 +515,7 @@
   <div class="wrap footer-inner">
     <p>© <span id="year"></span> Rose Legacy Home Solutions LLC · Overland Park, KS · HVAC · Plumbing · Electrical · Handyman</p>
     <div class="social-icons">
-      <a class="wsp" href="https://wa.me/14849512588" target="_blank" rel="noopener noreferrer" aria-label="Message us on WhatsApp">
+      <a class="wsp" href="https://wa.me/14849512588" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp: (484) 951-2588">
         <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.77.46 3.45 1.34 4.95L2 22l5.29-1.39a9.9 9.9 0 0 0 4.75 1.21h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2Zm5.78 14.04c-.24.68-1.4 1.32-1.93 1.39-.49.07-1.12.1-1.81-.11-.42-.13-.95-.3-1.64-.59-2.88-1.24-4.76-4.13-4.9-4.32-.14-.19-1.18-1.57-1.18-3 0-1.42.75-2.12 1.01-2.41.27-.29.58-.36.78-.36.19 0 .39 0 .56.01.18.01.42-.07.65.5.24.58.81 2 .88 2.14.07.14.12.31.02.5-.1.19-.15.31-.29.48-.15.17-.31.37-.44.5-.15.14-.3.3-.13.59.17.29.76 1.25 1.63 2.02 1.12.99 2.06 1.31 2.36 1.45.29.15.46.13.63-.07.17-.21.72-.84.91-1.13.19-.29.39-.24.65-.14.27.1 1.69.8 1.98.94.29.15.48.21.55.34.07.13.07.74-.17 1.42Z"/></svg>
       </a>
       <a class="fb" href="https://www.facebook.com/profile.php?id=61576740384735" target="_blank" rel="noopener noreferrer" aria-label="Visit our Facebook page">
