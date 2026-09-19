@@ -27,11 +27,12 @@ HEADER = f'''<header id="site-header">
       </span>
     </a>
     <nav class="nav-links" id="primary-nav" aria-label="Primary">
-      <a href="/#services">HVAC Services</a>
+      <a href="/#services">HVAC</a>
       <a href="/#beyond">Plumbing &amp; Electrical</a>
-      <a href="/#plans">Maintenance Plans</a>
+      <a href="/#plans">Plans</a>
       <a href="/#area">Service Area</a>
       <a href="/#gallery">Gallery</a>
+      <a href="/#reviews">Reviews</a>
       <a href="/#contact">Contact</a>
     </nav>
     <div class="nav-right">
@@ -40,8 +41,8 @@ HEADER = f'''<header id="site-header">
         <a class="fb" href="{FB}" target="_blank" rel="noopener noreferrer" aria-label="Visit our Facebook page">{FB_SVG}</a>
         <a class="ig" href="{IG}" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Instagram">{IG_SVG}</a>
       </div>
-      <a class="nav-call" href="{PHONE_TEL}">{PHONE_SVG}{PHONE_DISPLAY}</a>
-      <button class="menu-btn" id="menu-btn" aria-label="Toggle menu" aria-expanded="false" aria-controls="primary-nav">
+      <a class="nav-call" href="{PHONE_TEL}" aria-label="Call {PHONE_DISPLAY}">{PHONE_SVG}{PHONE_DISPLAY}</a>
+      <button class="menu-btn" id="menu-btn" aria-label="Open menu" aria-expanded="false" aria-controls="primary-nav">
         <svg class="icon-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
         <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
       </button>
@@ -65,26 +66,7 @@ FOOTER = f'''<footer>
   </div>
 </footer>'''
 
-SCRIPT = '''<script>
-  document.getElementById('year').textContent = new Date().getFullYear();
-  const header = document.getElementById('site-header');
-  window.addEventListener('scroll', () => { header.classList.toggle('scrolled', window.scrollY > 12); }, { passive:true });
-  (function(){
-    const btn = document.getElementById('menu-btn');
-    const nav = document.getElementById('primary-nav');
-    if(!btn || !nav) return;
-    const setOpen = (o) => { header.classList.toggle('menu-open', o); btn.setAttribute('aria-expanded', o?'true':'false'); };
-    btn.addEventListener('click', () => setOpen(!header.classList.contains('menu-open')));
-    nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setOpen(false)));
-    document.addEventListener('click', (e) => { if(header.classList.contains('menu-open') && !header.contains(e.target)) setOpen(false); });
-    document.addEventListener('keydown', (e) => { if(e.key === 'Escape') setOpen(false); });
-  })();
-  const revealEls = document.querySelectorAll('[data-reveal]');
-  if ('IntersectionObserver' in window) {
-    const io = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }); }, { threshold: 0.16, rootMargin: '0px 0px -60px 0px' });
-    revealEls.forEach(el => io.observe(el));
-  } else { revealEls.forEach(el => el.classList.add('in')); }
-</script>'''
+SCRIPT = '<script src="/assets/site.js" defer></script>'
 
 
 def page(slug, title, desc, city, region, eyebrow, h1_main, h1_em, lede,
@@ -135,7 +117,7 @@ def page(slug, title, desc, city, region, eyebrow, h1_main, h1_em, lede,
 <meta property="og:image" content="{SITE}/logo.png"/>
 <meta name="geo.region" content="US-{region}"/>
 <meta name="geo.placename" content="{html.escape(city)}"/>
-<meta name="theme-color" content="#4a2080"/>
+<meta name="theme-color" content="#211329"/>
 <script type="application/ld+json">{json.dumps(service_schema)}</script>
 <script type="application/ld+json">{json.dumps(faq_schema)}</script>
 <script type="application/ld+json">{json.dumps(breadcrumb_schema)}</script>
@@ -145,12 +127,21 @@ def page(slug, title, desc, city, region, eyebrow, h1_main, h1_em, lede,
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/styles.css"/>
+<noscript><style>.nav{{flex-wrap:wrap}}.nav-links{{position:static;visibility:visible;opacity:1;transform:none;display:flex;width:100%;max-height:none}}.menu-btn{{display:none}}</style></noscript>
 </head>
-<body>
+<body class="service-page">
+<a class="skip-link" href="#top">Skip to content</a>
+<div class="site-backdrop" aria-hidden="true">
+  <picture>
+    <source media="(max-aspect-ratio: 4/3)" srcset="/assets/media/roselegacy-mainvideo-poster-movil.jpg">
+    <img src="/assets/media/roselegacy-mainvideo-poster-desktop.jpg" alt="" width="1280" height="720" fetchpriority="high">
+  </picture>
+
+</div>
 
 {HEADER}
 
-<main id="top">
+<main id="top" tabindex="-1">
   <section class="sp-hero">
     <div class="wrap">
       <div class="breadcrumb"><a href="/">Home</a> &nbsp;›&nbsp; {html.escape(h1_main)}</div>
