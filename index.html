@@ -472,38 +472,41 @@
     <div class="wrap">
       <div class="contact-band" data-reveal>
         <div class="contact-inner">
-          <div>
-            <span class="kicker" style="color:var(--copper-light);">Get in touch</span>
+          <div class="contact-details">
+            <span class="kicker">Here when you need us · 24/7</span>
             <h2>Come home<em>to comfort.</em></h2>
-            <p>Call or email and tell us what's going on — a noise, a leak, a unit that won't kick on, a make-ready that needs to happen by Friday. We'll discuss the next steps and confirm your appointment.</p>
+            <p>Tell us what your home needs. We'll review your request, discuss the next steps and confirm an appointment with you.</p>
             <div class="contact-cta">
-              <a class="btn-primary" href="tel:+18162984828">
-                Call (816) 298-4828
-                <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-              </a>
+              <a class="btn-primary" href="tel:+18162984828">Call (816) 298-4828 <span aria-hidden="true">↗</span></a>
+              <p class="contact-urgent">Need urgent service? Call us directly to confirm arrival time.</p>
+            </div>
+            <div class="info-card">
+              <div class="info-row"><div><div class="label">WhatsApp · separate messaging line</div><div class="value"><a href="https://wa.me/14849512588" target="_blank" rel="noopener noreferrer">(484) 951-2588 <span aria-hidden="true">↗</span></a></div></div></div>
+              <div class="info-row"><div><div class="label">Email</div><div class="value"><a href="mailto:roselegacyhs@icloud.com">roselegacyhs@icloud.com</a></div></div></div>
+              <div class="info-row"><div><div class="label">Availability</div><div class="value">Available 24 hours a day, 7 days a week. Call to confirm arrival time.</div></div></div>
+              <div class="info-row"><div><div class="label">Locally based</div><div class="value">Overland Park, KS · Serving the KC Metro</div></div></div>
             </div>
           </div>
-          <div class="info-card">
-            <div class="info-row">
-              <div><div class="label">WhatsApp · separate messaging line</div><div class="value"><a href="https://wa.me/14849512588" target="_blank" rel="noopener noreferrer">(484) 951-2588 ↗</a></div></div>
+          <form class="service-form" id="service-request" action="https://formsubmit.co/roselegacyhs@icloud.com" method="POST" aria-labelledby="request-heading" aria-describedby="request-intro">
+            <span class="kicker">Let's get started</span>
+            <h3 id="request-heading">Request service.</h3>
+            <p id="request-intro">A few details help us prepare. Fields marked * are required.</p>
+            <input type="hidden" name="_subject" value="New service request | Rose Legacy">
+            <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_next" value="https://roselegacyhs.com/thank-you.html">
+            <input class="form-honey" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+            <div class="form-fields">
+              <div class="form-field"><label for="request-name">Your name *</label><input id="request-name" name="name" autocomplete="name" maxlength="100" pattern=".*\S.*" required></div>
+              <div class="form-field"><label for="request-phone">Phone number *</label><input id="request-phone" name="phone" type="tel" autocomplete="tel" minlength="7" maxlength="30" pattern=".*[0-9].*" required></div>
+              <div class="form-field form-wide"><label for="request-email">Email <span>(optional)</span></label><input id="request-email" name="email" type="email" autocomplete="email" maxlength="254"></div>
+              <div class="form-field"><label for="request-service">Service needed *</label><select id="request-service" name="service" required><option value="" disabled selected>Select a service</option><option>HVAC repair</option><option>AC or heating installation</option><option>Plumbing</option><option>Water heater</option><option>Electrical</option><option>Handyman / make-ready</option><option>Maintenance plan</option><option>Not sure yet</option></select></div>
+              <div class="form-field"><label for="request-area">City or ZIP code *</label><input id="request-area" name="area" maxlength="80" pattern=".*\S.*" required></div>
+              <div class="form-field form-wide"><label for="request-message">What can we help with? <span>(optional)</span></label><textarea id="request-message" name="message" rows="3" maxlength="2000" placeholder="A brief description of the issue or project"></textarea></div>
             </div>
-            <div class="info-row">
-              <div class="icon"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"/></svg></div>
-              <div><div class="label">Phone</div><div class="value"><a href="tel:+18162984828">(816) 298-4828</a></div></div>
-            </div>
-            <div class="info-row">
-              <div class="icon"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg></div>
-              <div><div class="label">Email</div><div class="value"><a href="mailto:roselegacyhs@icloud.com">roselegacyhs@icloud.com</a></div></div>
-            </div>
-            <div class="info-row">
-              <div class="icon"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-5.4 7-11a7 7 0 1 0-14 0c0 5.6 7 11 7 11Z"/><circle cx="12" cy="11" r="2.4"/></svg></div>
-              <div><div class="label">Based in</div><div class="value">Overland Park, KS</div></div>
-            </div>
-            <div class="info-row">
-              <div class="icon"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
-              <div><div class="label">Hours</div><div class="value">Available 24 hours a day, 7 days a week. Call to confirm arrival time.</div></div>
-            </div>
-          </div>
+            <p class="form-note">We'll use these details to respond to your request. Please leave out payment details and other sensitive information.</p>
+            <button class="btn-primary form-submit" type="submit">Send service request <span aria-hidden="true">↗</span></button>
+            <p class="form-note">Next, complete a quick spam check. Your request is emailed to our team through <a href="https://formsubmit.co/privacy.pdf" target="_blank" rel="noopener noreferrer">FormSubmit</a>. An appointment is confirmed only after we contact you.</p>
+          </form>
         </div>
       </div>
     </div>

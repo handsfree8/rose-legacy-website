@@ -38,7 +38,7 @@ class Document(HTMLParser):
 class SiteContracts(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.pages = {name: Document((ROOT / name).read_text()) for name in PAGES}
+        cls.pages = {name: Document((ROOT / name).read_text()) for name in PAGES + ('thank-you.html',)}
 
     def test_local_destinations_and_assets_exist(self):
         for name, doc in self.pages.items():
@@ -68,7 +68,8 @@ class SiteContracts(unittest.TestCase):
             self.assertIn(f'photos/IMG_{name}.jpg', photos)
 
     def test_search_metadata_and_verification_survive(self):
-        for name, doc in self.pages.items():
+        for name in PAGES:
+            doc = self.pages[name]
             canonical = [a['href'] for tag, a in doc.tags if tag == 'link' and a.get('rel') == 'canonical']
             suffix = '' if name == 'index.html' else Path(name).stem
             self.assertEqual(canonical, ['https://roselegacyhs.com/' + suffix])
@@ -87,6 +88,31 @@ class SiteContracts(unittest.TestCase):
             subprocess.run([sys.executable, str(script)], check=True, capture_output=True)
             for slug in SLUGS:
                 self.assertEqual((ROOT / (slug + '.html')).read_bytes(), (Path(directory) / (slug + '.html')).read_bytes(), slug)
+
+    def test_service_request_posts_to_the_business_inbox(self):
+        # Losing method/names would drop inquiry data; GET would expose it in URLs.
+        doc = self.pages['index.html']
+        forms = [a for tag, a in doc.tags if tag == 'form']
+        self.assertEqual(len(forms), 1)
+        self.assertEqual(forms[0].get('method', '').lower(), 'post')
+        self.assertEqual(forms[0].get('action'), 'https://formsubmit.co/roselegacyhs@icloud.com')
+        fields = {a.get('name'): a for tag, a in doc.tags if tag in ('input', 'select', 'textarea')}
+        self.assertTrue({'name', 'phone', 'email', 'service', 'area', 'message'} <= fields.keys())
+        for name in ('name', 'phone', 'service', 'area'):
+            self.assertIn('required', fields[name])
+        self.assertEqual(fields['email']['type'], 'email')
+        self.assertNotEqual(fields.get('_captcha', {}).get('value'), 'false')
+        self.assertIn('_honey', fields)
+        destination = urlsplit(fields['_next']['value'])
+        self.assertEqual(destination.netloc, 'roselegacyhs.com')
+        self.assertTrue((ROOT / destination.path.lstrip('/')).is_file())
+        confirmation = self.pages['thank-you.html']
+        self.assertTrue(any(a.get('name') == 'robots' and 'noindex' in a.get('content', '')
+                            for _, a in confirmation.tags))
+        labels = {a.get('for') for tag, a in doc.tags if tag == 'label'}
+        for name in ('name', 'phone', 'email', 'service', 'area', 'message'):
+            self.assertIn(fields[name].get('id'), labels)
+
 
     def test_home_only_video_and_small_downloads(self):
         for name, doc in self.pages.items():

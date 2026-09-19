@@ -66,6 +66,12 @@
     dialog.addEventListener('close', () => document.body.classList.remove('photo-open'));
   }
 
+  // Return to the same reviewed deployment after the provider's spam check.
+  const requestForm = document.getElementById('service-request');
+  if (requestForm && /^https?:$/.test(window.location.protocol)) {
+    requestForm.elements.namedItem('_next').value = new URL('/thank-you.html', window.location.origin).href;
+  }
+
   const video = document.getElementById('background-video');
   const control = document.getElementById('video-control');
   if (!video || !control) return;
