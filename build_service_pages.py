@@ -27,21 +27,22 @@ HEADER = f'''<header id="site-header">
       </span>
     </a>
     <nav class="nav-links" id="primary-nav" aria-label="Primary">
-      <a href="/#services">HVAC Services</a>
+      <a href="/#services">HVAC</a>
       <a href="/#beyond">Plumbing &amp; Electrical</a>
-      <a href="/#plans">Maintenance Plans</a>
+      <a href="/#plans">Plans</a>
       <a href="/#area">Service Area</a>
       <a href="/#gallery">Gallery</a>
+      <a href="/#reviews">Reviews</a>
       <a href="/#contact">Contact</a>
     </nav>
     <div class="nav-right">
       <div class="social-icons">
-        <a class="wsp" href="{WA}" target="_blank" rel="noopener noreferrer" aria-label="Message us on WhatsApp">{WSP_SVG}</a>
+        <a class="wsp" href="{WA}" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp: (484) 951-2588">{WSP_SVG}</a>
         <a class="fb" href="{FB}" target="_blank" rel="noopener noreferrer" aria-label="Visit our Facebook page">{FB_SVG}</a>
         <a class="ig" href="{IG}" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Instagram">{IG_SVG}</a>
       </div>
-      <a class="nav-call" href="{PHONE_TEL}">{PHONE_SVG}{PHONE_DISPLAY}</a>
-      <button class="menu-btn" id="menu-btn" aria-label="Toggle menu" aria-expanded="false" aria-controls="primary-nav">
+      <a class="nav-call" href="{PHONE_TEL}" aria-label="Call {PHONE_DISPLAY}">{PHONE_SVG}{PHONE_DISPLAY}</a>
+      <button class="menu-btn" id="menu-btn" aria-label="Open menu" aria-expanded="false" aria-controls="primary-nav">
         <svg class="icon-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
         <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
       </button>
@@ -53,7 +54,7 @@ FOOTER = f'''<footer>
   <div class="wrap footer-inner">
     <p>© <span id="year"></span> Rose Legacy Home Solutions LLC · Overland Park, KS · HVAC · Plumbing · Electrical · Handyman</p>
     <div class="social-icons">
-      <a class="wsp" href="{WA}" target="_blank" rel="noopener noreferrer" aria-label="Message us on WhatsApp">{WSP_SVG}</a>
+      <a class="wsp" href="{WA}" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp: (484) 951-2588">{WSP_SVG}</a>
       <a class="fb" href="{FB}" target="_blank" rel="noopener noreferrer" aria-label="Visit our Facebook page">{FB_SVG}</a>
       <a class="ig" href="{IG}" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Instagram">{IG_SVG}</a>
     </div>
@@ -65,26 +66,7 @@ FOOTER = f'''<footer>
   </div>
 </footer>'''
 
-SCRIPT = '''<script>
-  document.getElementById('year').textContent = new Date().getFullYear();
-  const header = document.getElementById('site-header');
-  window.addEventListener('scroll', () => { header.classList.toggle('scrolled', window.scrollY > 12); }, { passive:true });
-  (function(){
-    const btn = document.getElementById('menu-btn');
-    const nav = document.getElementById('primary-nav');
-    if(!btn || !nav) return;
-    const setOpen = (o) => { header.classList.toggle('menu-open', o); btn.setAttribute('aria-expanded', o?'true':'false'); };
-    btn.addEventListener('click', () => setOpen(!header.classList.contains('menu-open')));
-    nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setOpen(false)));
-    document.addEventListener('click', (e) => { if(header.classList.contains('menu-open') && !header.contains(e.target)) setOpen(false); });
-    document.addEventListener('keydown', (e) => { if(e.key === 'Escape') setOpen(false); });
-  })();
-  const revealEls = document.querySelectorAll('[data-reveal]');
-  if ('IntersectionObserver' in window) {
-    const io = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }); }, { threshold: 0.16, rootMargin: '0px 0px -60px 0px' });
-    revealEls.forEach(el => io.observe(el));
-  } else { revealEls.forEach(el => el.classList.add('in')); }
-</script>'''
+SCRIPT = '<script src="/assets/site.js" defer></script>'
 
 
 def page(slug, title, desc, city, region, eyebrow, h1_main, h1_em, lede,
@@ -135,7 +117,7 @@ def page(slug, title, desc, city, region, eyebrow, h1_main, h1_em, lede,
 <meta property="og:image" content="{SITE}/logo.png"/>
 <meta name="geo.region" content="US-{region}"/>
 <meta name="geo.placename" content="{html.escape(city)}"/>
-<meta name="theme-color" content="#4a2080"/>
+<meta name="theme-color" content="#211329"/>
 <script type="application/ld+json">{json.dumps(service_schema)}</script>
 <script type="application/ld+json">{json.dumps(faq_schema)}</script>
 <script type="application/ld+json">{json.dumps(breadcrumb_schema)}</script>
@@ -145,12 +127,21 @@ def page(slug, title, desc, city, region, eyebrow, h1_main, h1_em, lede,
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/styles.css"/>
+<noscript><style>.nav{{flex-wrap:wrap}}.nav-links{{position:static;visibility:visible;opacity:1;transform:none;display:flex;width:100%;max-height:none}}.menu-btn{{display:none}}</style></noscript>
 </head>
-<body>
+<body class="service-page">
+<a class="skip-link" href="#top">Skip to content</a>
+<div class="site-backdrop" aria-hidden="true">
+  <picture>
+    <source media="(max-aspect-ratio: 4/3)" srcset="/assets/media/roselegacy-mainvideo-poster-movil.jpg">
+    <img src="/assets/media/roselegacy-mainvideo-poster-desktop.jpg" alt="" width="1280" height="720" fetchpriority="high">
+  </picture>
+
+</div>
 
 {HEADER}
 
-<main id="top">
+<main id="top" tabindex="-1">
   <section class="sp-hero">
     <div class="wrap">
       <div class="breadcrumb"><a href="/">Home</a> &nbsp;›&nbsp; {html.escape(h1_main)}</div>
@@ -180,12 +171,13 @@ def page(slug, title, desc, city, region, eyebrow, h1_main, h1_em, lede,
       </div>
 
       <aside class="sp-aside" data-reveal>
-        <h3>Need it fixed today?</h3>
-        <p>Real people answer the phone — no call center, no runaround. Tell us what's going on and we'll get you on the schedule.</p>
+        <h3>Let’s talk about your project.</h3>
+        <p>Real people answer the phone — no call center, no runaround. Tell us what's going on and we'll confirm the next available appointment.</p>
         <a class="btn-primary" href="{PHONE_TEL}">Call {PHONE_DISPLAY} {ARROW}</a>
         <div class="aside-meta">
           <div><strong>Serving:</strong> {html.escape(city)} &amp; KC Metro</div>
-          <div><strong>Hours:</strong> Open 24/7 for emergencies</div>
+          <div><strong>WhatsApp:</strong> <a href="{WA}" target="_blank" rel="noopener noreferrer">(484) 951-2588</a> · messaging line</div>
+          <div><strong>Hours:</strong> Available 24 hours a day, 7 days a week. Call to confirm arrival time.</div>
           <div><strong>Local &amp; licensed:</strong> Overland Park based</div>
         </div>
       </aside>
@@ -225,7 +217,7 @@ PAGES.append(dict(
     city="Overland Park", region="KS",
     eyebrow="HVAC Repair · Overland Park, KS",
     h1_main="HVAC Repair in Overland Park, KS", h1_em="we pick up the phone.",
-    lede="When the AC quits in July or the furnace dies in January, you need someone who shows up, diagnoses it straight, and fixes it for keeps. Rose Legacy is your local Overland Park HVAC crew — same-week service and honest answers.",
+    lede="When the AC quits in July or the furnace dies in January, you need someone who shows up, diagnoses it straight, and fixes it for keeps. Rose Legacy is your local Overland Park HVAC crew — available 24/7, with honest answers and arrival times confirmed by phone.",
     included_heading="What's included",
     included=[
         "AC repair — short cycling, warm air, frozen coils, no cooling",
@@ -239,11 +231,11 @@ PAGES.append(dict(
         "Local Overland Park crew — fast response across the KC Metro",
         "Real people answer the phone, every time",
         "Straight diagnosis — no upselling repairs you don't need",
-        "Open 24/7 for true HVAC emergencies",
+        "Available 24/7 for urgent HVAC repairs — call to confirm arrival time",
     ],
     faqs=[
         ("How fast can you repair my AC in Overland Park?",
-         "In most cases we offer same-week service, and we keep slots open for emergencies. Call (816) 298-4828 and we'll tell you our soonest availability when you reach out."),
+         "Call (816) 298-4828 with details of the problem. We'll confirm our next available appointment before scheduling service."),
         ("Do you repair both AC and furnace systems?",
          "Yes. HVAC is our specialty — we handle air conditioning and heating across all major brands, from quick repairs to full system replacements."),
         ("What does an HVAC repair cost?",
@@ -308,14 +300,14 @@ PAGES.append(dict(
         "Upfront pricing before any work begins",
     ],
     why=[
-        "Fast turnaround — often same-day replacement",
+        "Replacement scheduling confirmed with you before service",
         "Tank and tankless expertise",
         "Local crew serving the whole KC Metro",
         "Clean install, honest pricing, no surprises",
     ],
     faqs=[
         ("How quickly can you replace my water heater?",
-         "In most cases we can replace a failed water heater the same day or next day. Call (816) 298-4828 and we'll confirm availability."),
+         "Timing depends on equipment availability and our service schedule. Call (816) 298-4828 and we'll confirm the next available appointment."),
         ("Should I get a tank or tankless water heater?",
          "It depends on your household size, hot water demand and budget. We'll walk you through the trade-offs and recommend what genuinely fits your home."),
         ("Do you remove the old water heater?",
@@ -353,7 +345,7 @@ PAGES.append(dict(
         ("Do you handle make-ready plumbing for rentals?",
          "Yes — make-ready and turn work for property managers is a core part of what we do. We can knock out plumbing punch lists fast so units are rent-ready."),
         ("Can you come out for a plumbing emergency in Lee's Summit?",
-         "We're available 24/7 for emergencies. Call (816) 298-4828 and we'll get to you as fast as we can."),
+         "We're available 24 hours a day, 7 days a week. Call (816) 298-4828 to discuss the problem and confirm arrival time. An online inquiry does not reserve an appointment."),
         ("Do you do both plumbing and HVAC?",
          "Yes. Rose Legacy is one crew for HVAC, plumbing, electrical and handyman make-ready work — so you're not juggling multiple contractors."),
     ],
