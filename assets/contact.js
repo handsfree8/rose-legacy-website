@@ -40,12 +40,17 @@
         body: JSON.stringify(payload),
         signal: controller.signal
       });
-      if (!response.ok) throw new Error('Request failed');
+      if (!response.ok) throw new Error('Provider HTTP ' + response.status);
       const result = await response.json();
-      if (result.success !== true && result.success !== 'true') throw new Error('Request not accepted');
+      if (result.success !== true && result.success !== 'true') {
+        // Only the provider's diagnostic message is logged, never the form payload.
+        console.warn('Service request rejected by provider:', String(result.message || 'No reason supplied').slice(0, 400));
+        throw new Error('Request not accepted');
+      }
       form.reset();
       show('success', 'Your request has been sent.', "Thank you for reaching out. We'll contact you to discuss the next steps and confirm an appointment.");
-    } catch {
+    } catch (error) {
+      console.warn('Service request delivery:', error.name, error.message);
       // A timeout can occur after acceptance, so do not claim the request was not sent.
       show('error', "We couldn't confirm your submission.", 'Your details are still here. You can try again, or call (816) 298-4828 to confirm whether we received your request.');
     } finally {
