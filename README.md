@@ -38,3 +38,7 @@ With JavaScript, `assets/contact.js` submits JSON to the documented AJAX endpoin
 Without JavaScript, native POST and the provider's hosted spam check remain available, with `thank-you.html` as the return page. The noindex return page explains that appointments require confirmation. The form discloses the mail processor and links to its privacy terms. No email API key is exposed or needed in Vercel.
 
 Run `node --test tests/test_contact.cjs` for submission-state tests in addition to the static checks above. These isolate the external network; they do not prove email delivery. Verify a real AJAX request in the owner's inbox after deployment. Documentation: https://formsubmit.co/ajax-documentation and https://formsubmit.co/documentation
+
+## Background playback
+
+The muted, inline video starts after DOM parsing rather than waiting for all page assets. The pause/play control is a compact 44px circular icon with accessible labels and tooltips; it stays hidden during initial loading. Explicit user pause survives orientation changes and tab switches. Reduced-motion and data-saving preferences still avoid the initial download. If autoplay is blocked, the first pointer/keyboard interaction retries only when preferences allow it; the play icon remains as a browser-policy fallback. Run `node --test tests/test_video.cjs` to check these lifecycle rules.

@@ -37,7 +37,7 @@ img, svg { max-width: 100%; display: block; }
 .site-backdrop video.ready { opacity: 1; }
 .site-backdrop::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(24,11,34,.9), rgba(24,11,34,.55) 52%, rgba(24,11,34,.28)), linear-gradient(180deg, rgba(24,11,34,.22), transparent 45%, rgba(24,11,34,.6)); }
 .service-page .site-backdrop::after { background: linear-gradient(110deg, rgba(24,11,34,.94), rgba(24,11,34,.78)); }
-.video-control { position: fixed; bottom: 20px; right: 22px; z-index: 60; min-height: 44px; padding: 0 16px; display: inline-flex; align-items: center; gap: 9px; font-size: 11px; border: 1px solid #f8f0e555; border-radius: 40px; background: #211329dd; backdrop-filter: blur(10px); }
+.video-control { position: fixed; bottom: 20px; right: 22px; z-index: 60; width: 44px; height: 44px; padding: 0; display: inline-flex; justify-content: center; align-items: center; font-size: 15px; border: 1px solid #f8f0e555; border-radius: 40px; background: #211329dd; backdrop-filter: blur(10px); }
 .video-control:hover { background: #412b50; }
 
 /* Original logo and all existing destinations remain in the navigation. */
@@ -355,7 +355,7 @@ footer { position: relative; padding: 40px 0 92px; border-top: 1px solid var(--l
   .info-row .icon { width: 36px; height: 36px; }
   .footer-inner { align-items: start; flex-direction: column; }
   .footer-links { gap: 16px; }
-  .video-control { bottom: 14px; right: 14px; font-size: 10px; padding: 0 13px; }
+  .video-control { bottom: 14px; right: 14px; }
   .lightbox { padding: 14px; width: calc(100% - 24px); }
   .lightbox-inner img { max-height: 65svh; }
   .lightbox-caption { font-size: 11px; }

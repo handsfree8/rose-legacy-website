@@ -84,13 +84,20 @@
   let hasFailed = false;
   const allowed = () => !userPaused && (requestedMotion || (!reducedMotion.matches && !saveData));
   const sync = () => {
+    if (hasFailed) return;
+    control.hidden = false;
     const paused = video.paused;
     control.querySelector('[data-video-icon]').textContent = paused ? '▶' : 'Ⅱ';
-    control.querySelector('[data-video-label]').textContent = paused ? 'Play background' : 'Pause background';
+    control.setAttribute('title', paused ? 'Play background video' : 'Pause background video');
     control.setAttribute('aria-label', paused ? 'Play background video' : 'Pause background video');
   };
   const play = () => {
-    if (!hasFailed && !document.hidden) video.play().catch(sync);
+    if (!hasFailed && !document.hidden) {
+      video.muted = true;
+      video.defaultMuted = true;
+      video.playsInline = true;
+      video.play().catch(sync);
+    }
   };
   const loadVideo = () => {
     if (hasFailed) return;
@@ -105,10 +112,12 @@
       if (Number.isFinite(video.duration)) video.currentTime = Math.min(time, Math.max(0, video.duration - .1));
       if (allowed()) play();
     };
+    video.autoplay = allowed();
+    video.muted = true;
     video.src = source;
     video.load();
   };
-  control.hidden = false;
+  if (!allowed()) sync();
   control.addEventListener('click', () => {
     if (video.paused) {
       requestedMotion = true;
@@ -117,6 +126,7 @@
       else loadVideo();
     } else {
       userPaused = true;
+      video.autoplay = false;
       video.pause();
     }
   });
@@ -134,6 +144,7 @@
     if (event.matches) {
       requestedMotion = false;
       userPaused = true;
+      video.autoplay = false;
       video.pause();
     }
   });
@@ -141,9 +152,17 @@
     if (document.hidden) video.pause();
     else if (video.getAttribute('src') && allowed()) play();
   });
-  // The responsive poster paints first. Reduced-motion/data-saving visitors
-  // download no background video unless they explicitly press Play.
-  const start = () => { if (allowed()) loadVideo(); };
-  if (document.readyState === 'complete') start();
-  else window.addEventListener('load', start, {once: true});
+  // The script is deferred: start as soon as the DOM is parsed, not after every
+  // gallery image/font has loaded. No source is attached for motion/data opt-outs.
+  if (allowed()) loadVideo();
+  const retryOnInteraction = event => {
+    // The toggle owns its own gesture; do not play before its click handler.
+    if (event && control.contains(event.target)) return;
+    if (!hasFailed && video.paused && allowed()) {
+      if (video.getAttribute('src')) play();
+      else loadVideo();
+    }
+  };
+  document.addEventListener('pointerdown', retryOnInteraction, {once: true, passive: true});
+  document.addEventListener('keydown', retryOnInteraction, {once: true});
 })();
